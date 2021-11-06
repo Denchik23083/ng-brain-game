@@ -26,8 +26,8 @@ export class RegisterComponent implements OnInit {
     const newUser = form.value as RegisterModel;
     this.service.register(newUser).subscribe(() => {
       form.resetForm();
+      this.router.navigate(['/login']);
     })
-    this.router.navigate(['/login']);
   }
 
 }

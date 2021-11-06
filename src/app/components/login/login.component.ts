@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
     const user = form.value as LoginModel;
     this.service.login(user).subscribe(() => {
       form.resetForm();
+      this.router.navigate(['/main']);
     })
-    this.router.navigate(['/main']);
   }
 
 }
