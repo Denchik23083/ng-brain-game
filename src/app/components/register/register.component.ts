@@ -11,7 +11,8 @@ import { BrainGameService, RegisterModel } from '../services/brain-game-service'
 export class RegisterComponent implements OnInit {
 
   user: RegisterModel = {
-    login: '',
+    name: '',
+    email: '',
     password: '',
     confirmPassword: '',
   };
@@ -26,7 +27,7 @@ export class RegisterComponent implements OnInit {
     this.service.register(newUser).subscribe(() => {
       form.resetForm();
     })
-    this.router.navigate(['/main']);
+    this.router.navigate(['/login']);
   }
 
 }
