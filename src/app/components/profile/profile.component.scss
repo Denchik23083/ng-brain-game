@@ -1,0 +1,62 @@
+.but{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.link{
+    text-decoration: none;
+    color: black;
+}
+.body{
+    margin: 10px;
+}
+.container{
+	display: grid; 
+	height: 1200px;
+	margin-top: 20px;
+	grid-template-columns: 0.6fr 0.5fr 2fr;
+}
+.ava{
+	width: 100%;
+	height: 350px;
+	background-color: white;
+	border: 0.5px solid black;
+	border-radius: 4px;
+}
+.av_256{
+	height: 250px;
+	width: 250px;
+	margin: 35px;
+	border-radius: 50%;
+}
+.hr{color: #DCDCDC;}
+.button{
+	background-color: lightblue;
+	width: 250px;
+	height: 50px;
+	text-align: center;
+	margin: 50px;
+  margin-left: 120px;
+	border: 0px;
+	border-radius: 4px;
+}
+.danie{
+	width: 500px;
+	height: 350px;
+	background-color: white;
+	margin-left: 20px;
+	border: 0.5px solid black;
+	border-radius: 4px;
+}
+.edit{
+	font-size: 25px;
+	color: white;
+}
+.Name{
+  margin-top: 10px;
+	padding-left: 30px; 
+	font-size: 30px;
+}
+.hr2{
+	margin: 30px;
+	color: #DCDCDC;
+}
