@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BrainGameService, LoginModel } from '../services/brain-game-service';
+import { BrainGameService, LoginModel } from '../../services/brain-game-service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 

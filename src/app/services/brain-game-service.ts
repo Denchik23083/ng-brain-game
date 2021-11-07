@@ -17,6 +17,13 @@ export interface LoginModel{
   password: string,
 }
 
+export interface UserModel{
+  id?: number,
+  name: string,
+  email: string,
+  password: string,
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,6 +32,7 @@ export class BrainGameService {
 
   registered$ = new BehaviorSubject<RegisterModel[]>([]);
   logined$ = new BehaviorSubject<LoginModel[]>([]);
+  user$ = new BehaviorSubject<UserModel[]>([]);
 
   constructor(private http: HttpClient) { }
 
@@ -40,5 +48,12 @@ export class BrainGameService {
       .pipe(
         tap(log => this.logined$.next([...this.logined$.value, log]))
       )
+  }
+
+  get(): Observable<UserModel[]>{
+    return this.http.get<UserModel[]>(`${this.apiLink}/User`)
+      .pipe(
+        tap(user => this.user$.next(user))
+      );
   }
 }

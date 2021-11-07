@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BrainGameService, RegisterModel } from '../services/brain-game-service';
+import { BrainGameService, RegisterModel } from '../../services/brain-game-service';
 
 @Component({
   selector: 'app-register',
