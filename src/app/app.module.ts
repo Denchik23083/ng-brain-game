@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './components/profile/profile.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { HeaderComponent } from './components/header/header.component';
+import { GameComponent } from './components/game/game.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HeaderComponent } from './components/header/header.component';
     LoginComponent,
     ProfileComponent,
     StatisticsComponent,
-    HeaderComponent
+    HeaderComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

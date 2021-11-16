@@ -1,12 +1,23 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-success text-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto dont-weight-normal">BrainGame</h5>
-    <nav><a class="p-2 text-white text-decoration-none" routerLink="/profile">Profile</a></nav>
-    <nav><a class="p-2 text-white text-decoration-none" routerLink="/statistics">Statistics</a></nav>
+    <nav><a class="p-2 text-white text-decoration-none" routerLink="/main/profile">Profile</a></nav>
+    <nav><a class="p-2 text-white text-decoration-none" routerLink="/main/statistics">Statistics</a></nav>
 </div>
 
-<!-- <div>    
-    <span *ngFor="let user of (user$ | async)" >
-        <br>
-        <h1 class="h1">Добро пожаловать {{user.name}}!</h1>
-    </span>
-</div> -->
+<div class="container">
+    <div class="block1">
+        <h2>QUIZ</h2>
+        <hr>    
+        <button routerLink="/main/game" class="red-buy">New Game</button>        
+    </div>
+    <div class="block2">
+        <h2>OTHER</h2>
+        <hr>   
+        <button routerLink="/main/game" class="orange-buy">New Game</button>    
+    </div>
+    <div class="block3">
+        <h2>OTHER</h2>
+        <hr>   
+        <button routerLink="/main/game" class="orange-buy">New Game</button>    
+    </div>
+</div>
