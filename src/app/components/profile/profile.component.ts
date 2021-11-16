@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BrainGameService, UserModel } from 'src/app/services/brain-game-service';
+import { UserService, UserModel } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
 
   user$!: BehaviorSubject<UserModel[]>;  
 
-  constructor(private service: BrainGameService, private router: Router) {
+  constructor(private service: UserService, private router: Router) {
     this.user$ = service.user$;
    }
 

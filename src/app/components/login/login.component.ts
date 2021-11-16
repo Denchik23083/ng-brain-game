@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BrainGameService, LoginModel } from '../../services/brain-game-service';
+import { AuthService, LoginModel } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     password: '',
   };
   
-  constructor(private readonly service: BrainGameService, private router: Router) { }
+  constructor(private readonly service: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BrainGameService, RegisterModel } from '../../services/brain-game-service';
+import { AuthService, RegisterModel } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     confirmPassword: '',
   };
   
-  constructor(private readonly service: BrainGameService, private router: Router) { }
+  constructor(private readonly service: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
