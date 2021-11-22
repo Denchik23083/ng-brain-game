@@ -11,6 +11,7 @@ export interface QuestionModel{
 @Injectable({
   providedIn: 'root'
 })
+
 export class BrainGameService {
   apiLink = 'https://localhost:6001/api';
   
@@ -19,8 +20,7 @@ export class BrainGameService {
   constructor(private http: HttpClient) { }  
 
   getQuestionById(id: number): Observable<QuestionModel[]>{
-    debugger;
-    const getById = this.quest$.value.filter(b => b.id == id)
+    const getById = this.quest$.value.filter(b => b.id == id);
     
     return this.http.get<QuestionModel[]>(`${this.apiLink}/Quiz/id?id=${id}`)
       .pipe(

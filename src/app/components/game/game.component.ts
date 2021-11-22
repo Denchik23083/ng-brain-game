@@ -3,6 +3,8 @@ import { BehaviorSubject } from 'rxjs';
 import { BrainGameService, QuestionModel } from 'src/app/services/brain-game-service';
 import { Router } from '@angular/router';
 
+let id = 1;
+
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -16,8 +18,6 @@ export class GameComponent implements OnInit {
     question: '',
   };
 
-  id!: 1;
-
   quest$!: BehaviorSubject<QuestionModel[]>;
 
   constructor(private service: BrainGameService, private router: Router) {
@@ -25,15 +25,11 @@ export class GameComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    // this.id++;
-    // this.service.getQuestionById(this.id);
   }
 
   load(): void{
-    console.log("Hallo");
-    
-    this.service.getQuestionById(this.id);
-    console.log("Foo");
+    this.service.getQuestionById(id).subscribe();    
+    id++;
+    window.location.reload; 
   }
-
 }

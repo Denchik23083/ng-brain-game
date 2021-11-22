@@ -14,6 +14,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { HeaderComponent } from './components/header/header.component';
 import { GameComponent } from './components/game/game.component';
+import { BrainGameService } from './services/brain-game-service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { GameComponent } from './components/game/game.component';
     HttpClientModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [BrainGameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
