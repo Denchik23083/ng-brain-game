@@ -3,18 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
-import { RegisterComponent } from './components/register/register.component';
-import { MainComponent } from './components/main/main.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { MainComponent } from './components/utilities/main/main.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthComponent } from './components/auth/auth.component';
-import { LoginComponent } from './components/login/login.component';
+import { AuthComponent } from './components/auth/auth/auth.component';
+import { LoginComponent } from './components/auth/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ProfileComponent } from './components/profile/profile.component';
-import { StatisticsComponent } from './components/statistics/statistics.component';
-import { HeaderComponent } from './components/header/header.component';
-import { GameComponent } from './components/game/game.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
+import { StatisticsComponent } from './components/user/statistics/statistics.component';
+import { HeaderComponent } from './components/utilities/header/header.component';
+import { GameComponent } from './components/brain/game/game.component';
 import { BrainGameService } from './services/brain-game-service';
+import { QuizzesComponent } from './components/brain/quizzes/quizzes.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BrainGameService } from './services/brain-game-service';
     ProfileComponent,
     StatisticsComponent,
     HeaderComponent,
-    GameComponent
+    GameComponent,
+    QuizzesComponent
   ],
   imports: [
     BrowserModule,
