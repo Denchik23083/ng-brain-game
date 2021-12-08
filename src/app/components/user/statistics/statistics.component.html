@@ -4,4 +4,8 @@
     <div class="button">
         <button routerLink="/main" class="link">Back</button>
     </div>
+    <div *ngFor="let stat of (statistics$ | async)" >
+        <br>
+        {{stat.name}}  {{stat.point}} / 10<br>
+    </div>
 </div>
