@@ -16,17 +16,16 @@ export class ProfileComponent implements OnInit {
     password: ''
   };
 
-  user$!: BehaviorSubject<UserModel[]>;  
+  users$!: BehaviorSubject<UserModel[]>;  
 
   constructor(private service: UserService, private router: Router) {
-    this.user$ = service.user$;
-   }
-
-   loadData(): void {
-    this.service.get().subscribe();
+    this.users$ = service.users$;
    }
 
   ngOnInit(): void {
+    this.service.get().subscribe(() => {
+      console.log(this.users$.value);
+    });
   }
 
 }

@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
 export interface UserModel{
-  id?: number,
   name: string,
   email: string,
   password: string,
@@ -22,7 +21,7 @@ export class UserService {
   apiLink = 'https://localhost:5001/api';
   statisticsLink = 'https://localhost:6001/api/Quiz';
 
-  user$ = new BehaviorSubject<UserModel[]>([]);
+  users$ = new BehaviorSubject<UserModel[]>([]);
   statistics$ = new BehaviorSubject<StatisticsModel[]>([]);
 
   constructor(private http: HttpClient) { }
@@ -30,7 +29,7 @@ export class UserService {
   get(): Observable<UserModel[]>{
     return this.http.get<UserModel[]>(`${this.apiLink}/User`)
       .pipe(
-        tap(user => this.user$.next(user))
+        tap(user => this.users$.next(user))
       );
   }
 
