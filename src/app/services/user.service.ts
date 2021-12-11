@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
+import { Redirect } from 'react-router-dom';
 
 export interface UserModel{
   name: string,
@@ -31,6 +32,17 @@ export class UserService {
       .pipe(
         tap(user => this.users$.next(user))
       );
+  }
+
+  edit(model: UserModel): Observable<UserModel>{
+    return this.http.put<UserModel>(`${this.apiLink}/User`, model)
+      .pipe(
+        tap(created => this.users$.next([...this.users$.value, created]))
+      )
+  }
+
+  remove(): Observable<{}>{
+    return this.http.delete(`${this.apiLink}/User`);
   }
 
   getPoints(): Observable<StatisticsModel[]>{

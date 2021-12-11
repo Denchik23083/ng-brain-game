@@ -7,6 +7,8 @@ import { MainComponent } from './components/utilities/main/main.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { StatisticsComponent } from './components/user/statistics/statistics.component';
+import { EditComponent } from './components/user/edit/edit.component';
+import { DeleteComponent } from './components/user/delete/delete.component';
 
 const routes: Routes = [
   { path: '', component: AuthComponent},
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'main/profile', component: ProfileComponent},
   { path: 'main/statistics', component: StatisticsComponent},
   { path: 'main/game', component: GameComponent},
+  { path: 'main/profile/edit', component: EditComponent},
+  { path: 'main/profile/delete', component: DeleteComponent},
 ];
 
 @NgModule({

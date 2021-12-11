@@ -16,6 +16,8 @@ import { HeaderComponent } from './components/utilities/header/header.component'
 import { GameComponent } from './components/brain/game/game.component';
 import { BrainGameService } from './services/brain-game-service';
 import { QuizzesComponent } from './components/brain/quizzes/quizzes.component';
+import { EditComponent } from './components/user/edit/edit.component';
+import { DeleteComponent } from './components/user/delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { QuizzesComponent } from './components/brain/quizzes/quizzes.component';
     StatisticsComponent,
     HeaderComponent,
     GameComponent,
-    QuizzesComponent
+    QuizzesComponent,
+    EditComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,
