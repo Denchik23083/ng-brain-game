@@ -5,6 +5,7 @@ import { tap } from 'rxjs/operators';
 import { Redirect } from 'react-router-dom';
 
 export interface UserModel{
+  id: number,
   name: string,
   email: string,
   password: string,
@@ -30,7 +31,12 @@ export class UserService {
   get(): Observable<UserModel[]>{
     return this.http.get<UserModel[]>(`${this.apiLink}/User`)
       .pipe(
-        tap(user => this.users$.next(user))
+        tap(user => 
+          {
+            console.log(user);
+            this.users$.next(user);
+            console.log(this.users$);
+          })
       );
   }
 

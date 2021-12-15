@@ -11,6 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ProfileComponent implements OnInit {
 
   user: UserModel = {
+    id: 0,
     name: '',
     email: '',
     password: ''

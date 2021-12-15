@@ -14,8 +14,8 @@ let id = 1;
 export class GameComponent implements OnInit {
 
   quest: QuestionModel = {
-    id: 0,
     question: '',
+    answers: '',
   };
 
   quest$!: BehaviorSubject<QuestionModel[]>;
@@ -29,6 +29,10 @@ export class GameComponent implements OnInit {
 
   load(): void{
     this.service.getQuestionById(id).subscribe();    
+    if(id > 2)
+    {
+      id = 0;
+    }
     id++;
     window.location.reload; 
   }

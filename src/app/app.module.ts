@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { RegisterComponent } from './components/auth/register/register.component';
-import { MainComponent } from './components/utilities/main/main.component';
+import { MainComponent } from './components/brain/main/main.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './components/auth/auth/auth.component';
@@ -15,7 +15,6 @@ import { StatisticsComponent } from './components/user/statistics/statistics.com
 import { HeaderComponent } from './components/utilities/header/header.component';
 import { GameComponent } from './components/brain/game/game.component';
 import { BrainGameService } from './services/brain-game-service';
-import { QuizzesComponent } from './components/brain/quizzes/quizzes.component';
 import { EditComponent } from './components/user/edit/edit.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
 
@@ -30,7 +29,6 @@ import { DeleteComponent } from './components/user/delete/delete.component';
     StatisticsComponent,
     HeaderComponent,
     GameComponent,
-    QuizzesComponent,
     EditComponent,
     DeleteComponent
   ],
@@ -41,7 +39,7 @@ import { DeleteComponent } from './components/user/delete/delete.component';
     HttpClientModule,
     NgbModule,
   ],
-  providers: [BrainGameService],
+  providers: [BrainGameService, GameComponent, ProfileComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
