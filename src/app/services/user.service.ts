@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
-import { Redirect } from 'react-router-dom';
 
 export interface UserModel{
-  id: number,
   name: string,
   email: string,
   password: string,
@@ -23,17 +21,16 @@ export class UserService {
   apiLink = 'https://localhost:5001/api';
   statisticsLink = 'https://localhost:6001/api/Quiz';
 
-  users$ = new BehaviorSubject<UserModel[]>([]);
+  users$ = new BehaviorSubject<UserModel>(null as any);
   statistics$ = new BehaviorSubject<StatisticsModel[]>([]);
 
   constructor(private http: HttpClient) { }
 
-  get(): Observable<UserModel[]>{
-    return this.http.get<UserModel[]>(`${this.apiLink}/User`)
+  get(): Observable<UserModel>{
+    return this.http.get<UserModel>(`${this.apiLink}/User`)
       .pipe(
         tap(user => 
           {
-            console.log(user);
             this.users$.next(user);
             console.log(this.users$);
           })
@@ -43,7 +40,7 @@ export class UserService {
   edit(model: UserModel): Observable<UserModel>{
     return this.http.put<UserModel>(`${this.apiLink}/User`, model)
       .pipe(
-        tap(created => this.users$.next([...this.users$.value, created]))
+        tap(created => this.users$.next(created))
       )
   }
 

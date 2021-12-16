@@ -11,7 +11,6 @@ import { NgForm } from '@angular/forms';
 export class EditComponent implements OnInit {
 
   user: UserModel = {
-    id: 0,
     name: '',
     email: '',
     password: ''

@@ -25,15 +25,14 @@ export class GameComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  }
-
-  load(): void{
-    this.service.getQuestionById(id).subscribe();    
     if(id > 2)
     {
-      id = 0;
+      id = 1;
     }
+    this.service.getQuestionById(id).subscribe();    
+    
     id++;
-    window.location.reload; 
   }
+
+  
 }

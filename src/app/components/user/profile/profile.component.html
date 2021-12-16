@@ -5,23 +5,19 @@
     </div>
 </div>
 
-<div class="container">	
-	<div>
-		<div class="ava">
-			<img src="assets/av_256.png" class="av_256">
-        </div>
+<div class="container">
+	<div class="ava">
+		<img src="assets/av_256.png" class="av_256">
 	</div>
-	<div>
-		<div class="danie">			  
-			<div *ngFor="let user of (users$ | async)" >
-				<br>
-				<p class="Name">Name: {{user.name}}!</p>
-				<p class="Name">Email: {{user.email}}</p>
-			</div>			
-			<hr class="hr2">
+	<div class="danie">			  
+		<div *ngFor="const user in users$" >
+			<br>
+			<p class="Name">Name: {{user.name}}</p>
+			<p class="Name">Email: {{user.email}}</p>
+		</div>			
+		<hr class="hr2">
 
-            <button class="edit" routerLink="/main/profile/edit">Edit</button>
-			<button class="del" routerLink="/main/profile/delete">Delete</button>
-		</div>
+		<button class="edit" routerLink="/main/profile/edit">Edit</button>
+		<button class="del" routerLink="/main/profile/delete">Delete</button>
 	</div>
 </div>

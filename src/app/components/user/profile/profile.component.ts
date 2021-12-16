@@ -11,22 +11,18 @@ import { BehaviorSubject } from 'rxjs';
 export class ProfileComponent implements OnInit {
 
   user: UserModel = {
-    id: 0,
     name: '',
     email: '',
     password: ''
   };
 
-  users$!: BehaviorSubject<UserModel[]>;  
+  users$!: BehaviorSubject<UserModel>;  
 
   constructor(private service: UserService, private router: Router) {
     this.users$ = service.users$;
    }
 
   ngOnInit(): void {
-    this.service.get().subscribe(() => {
-      console.log(this.users$.value);
-    });
+    this.service.get().subscribe();
   }
-
 }

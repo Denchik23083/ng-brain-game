@@ -3,12 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './components/auth/auth/auth.component';
 import { GameComponent } from './components/brain/game/game.component';
 import { LoginComponent } from './components/auth/login/login.component';
-import { MainComponent } from './components/brain/main/main.component';
+import { QuizzesComponent } from './components/brain/quizzes/quizzes.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { StatisticsComponent } from './components/user/statistics/statistics.component';
 import { EditComponent } from './components/user/edit/edit.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
+import { MainComponent } from './components/utilities/main/main.component';
 
 const routes: Routes = [
   { path: '', component: AuthComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'main/profile', component: ProfileComponent},
   { path: 'main/statistics', component: StatisticsComponent},
-  { path: 'main/game', component: GameComponent},
+  { path: 'main/quizzes', component: QuizzesComponent},
+  { path: 'main/quizzes/game', component: GameComponent},
   { path: 'main/profile/edit', component: EditComponent},
   { path: 'main/profile/delete', component: DeleteComponent},
 ];

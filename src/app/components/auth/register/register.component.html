@@ -5,12 +5,12 @@
     </div>
     <br />
     <form #form="ngForm" (ngSubmit)="submit(form)">
-        <input [(ngModel)] = 'user.name' name='name' type="text"/><br /><br />
-        <input [(ngModel)] = 'user.email' name='email' type="email"/><br /><br />
-        <input [(ngModel)] = 'user.password' type='password' name='password'/><br /><br />
-        <input [(ngModel)] = 'user.confirmPassword' type='password' name='confirmPassword'/><br /><br />
+        <input [(ngModel)] = 'user.name' name='name' type="text" placeholder="name"/><br /><br />
+        <input [(ngModel)] = 'user.email' name='email' type="email" placeholder="email"/><br /><br />
+        <input [(ngModel)] = 'user.password' type='password' name='password' placeholder="password"/><br /><br />
+        <input [(ngModel)] = 'user.confirmPassword' type='password' name='confirmPassword' placeholder="confirmPassword"/><br /><br />
 
         <button type='submit'>Register</button>
     </form>
-    <div class="button">Уже есть аккаунт? <a routerLink="/login">Войдите в учетную запись</a></div>
+    <div class="button">Already have an account? <a routerLink="/login">Sign in account</a></div>
 </div>

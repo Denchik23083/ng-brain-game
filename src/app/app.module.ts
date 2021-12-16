@@ -3,8 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
+import { MainComponent } from './components/utilities/main/main.component';
 import { RegisterComponent } from './components/auth/register/register.component';
-import { MainComponent } from './components/brain/main/main.component';
+import { QuizzesComponent } from './components/brain/quizzes/quizzes.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './components/auth/auth/auth.component';
@@ -22,8 +23,9 @@ import { DeleteComponent } from './components/user/delete/delete.component';
   declarations: [
     AppComponent,
     RegisterComponent,
-    MainComponent,
+    QuizzesComponent,
     AuthComponent,
+    MainComponent,
     LoginComponent,
     ProfileComponent,
     StatisticsComponent,

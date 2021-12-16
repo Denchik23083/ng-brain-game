@@ -1,0 +1,31 @@
+.block1{
+    display: inline-block;
+    border: 3px solid black;
+    height: 600px;
+    width: 350px;
+    border-radius: 20px;
+    background-color:  white;
+    vertical-align: top;
+    text-align: center;
+    padding-top: 10px;
+    margin: 10px;
+}
+
+.block1:hover{
+    transition: 1s ease-in;
+    transform: scale(1.05);
+}
+
+.red-buy{
+    height: 60px;
+    width: 150px;
+    border-radius: 10px;
+    margin-top: 400px;
+    margin-left: 10px;
+    color: white;
+    font-size: 25px;
+}
+
+.red-buy{    
+    background-color: rgb(199, 60, 60);    
+}

@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 import { GameComponent } from '../game/game.component';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  selector: 'app-quizzes',
+  templateUrl: './quizzes.component.html',
+  styleUrls: ['./quizzes.component.scss']
 })
-export class MainComponent implements OnInit {
+export class QuizzesComponent implements OnInit {
 
   quizzes: QuizzesModel = {
     name: '',
@@ -29,21 +29,21 @@ export class MainComponent implements OnInit {
   animal(): void {
     this.quizzes.name = 'Animals';
     this.service.quizzes(this.quizzes).subscribe(() => {
-      this.router.navigate(['/main/game']);
+      this.router.navigate(['/main/quizzes/game']);
     });
   }
 
   plants(): void {
     this.quizzes.name = 'Plants';
     this.service.quizzes(this.quizzes).subscribe(() => {
-      this.router.navigate(['/main/game']);
+      this.router.navigate(['/main/quizzes/game']);
     });
   }
 
   mushrooms(): void {
     this.quizzes.name = 'Mushrooms';
     this.service.quizzes(this.quizzes).subscribe(() => {
-      this.router.navigate(['/main/game']);
+      this.router.navigate(['/main/quizzes/game']);
     });
   }
 
