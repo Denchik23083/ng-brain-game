@@ -21,19 +21,15 @@ export class UserService {
   apiLink = 'https://localhost:5001/api';
   statisticsLink = 'https://localhost:6001/api/Quiz';
 
-  users$ = new BehaviorSubject<UserModel>(null as any);
   statistics$ = new BehaviorSubject<StatisticsModel[]>([]);
+  users$ = new BehaviorSubject<UserModel | null>(null);
 
   constructor(private http: HttpClient) { }
 
   get(): Observable<UserModel>{
     return this.http.get<UserModel>(`${this.apiLink}/User`)
       .pipe(
-        tap(user => 
-          {
-            this.users$.next(user);
-            console.log(this.users$);
-          })
+        tap(user => this.users$.next(user))
       );
   }
 

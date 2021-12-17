@@ -16,10 +16,11 @@ export class ProfileComponent implements OnInit {
     password: ''
   };
 
-  users$!: BehaviorSubject<UserModel>;  
+  users$: BehaviorSubject<UserModel | null>;  
 
   constructor(private service: UserService, private router: Router) {
     this.users$ = service.users$;
+    console.log(this.users$);
    }
 
   ngOnInit(): void {

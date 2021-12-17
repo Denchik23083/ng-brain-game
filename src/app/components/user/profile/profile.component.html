@@ -10,12 +10,11 @@
 		<img src="assets/av_256.png" class="av_256">
 	</div>
 	<div class="danie">			  
-		<div *ngFor="const user in users$" >
+		<div *ngIf="users$ | async as user">
 			<br>
 			<p class="Name">Name: {{user.name}}</p>
 			<p class="Name">Email: {{user.email}}</p>
-		</div>			
-		<hr class="hr2">
+		</div>
 
 		<button class="edit" routerLink="/main/profile/edit">Edit</button>
 		<button class="del" routerLink="/main/profile/delete">Delete</button>
