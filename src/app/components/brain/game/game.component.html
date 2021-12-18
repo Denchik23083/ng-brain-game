@@ -1,6 +1,13 @@
 <app-header></app-header>
 
-<div *ngFor="let quest of (quest$ | async)" >
+<button (click)="load()">But</button>
+
+<div *ngIf="quest$ | async as quest">
     <br>
-    <h1 class="h1">{{quest.question}}!</h1>
+    <h2 class="h1">{{number}}) {{quest.question}}</h2>
 </div>
+<div *ngFor="let answer of (answers$ | async)">
+    <br>
+    <h2 class="h1">{{answer.answers}}</h2>
+</div>
+

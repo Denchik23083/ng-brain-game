@@ -19,7 +19,7 @@ export interface StatisticsModel{
 })
 export class UserService {
   apiLink = 'https://localhost:5001/api';
-  statisticsLink = 'https://localhost:6001/api/Quiz';
+  statisticsLink = 'https://localhost:6001/api/Statistics';
 
   statistics$ = new BehaviorSubject<StatisticsModel[]>([]);
   users$ = new BehaviorSubject<UserModel | null>(null);

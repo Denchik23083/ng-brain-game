@@ -4,8 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
 export interface QuestionModel{
-  question: string,
-  answers: string,
+  question: string
+}
+
+export interface AnswersModel{
+  answers: string
 }
 
 export interface QuizzesModel{
@@ -20,19 +23,23 @@ export interface QuizzesModel{
 export class BrainGameService {
   apiLink = 'https://localhost:6001/api';
   
-  quest$ = new BehaviorSubject<QuestionModel[]>([]);
+  quest$ = new BehaviorSubject<QuestionModel | null>(null);
+  answers$ = new BehaviorSubject<AnswersModel[]>([]);
   quizzes$ = new BehaviorSubject<QuizzesModel[]>([]);
 
   constructor(private http: HttpClient) { }  
 
-  getQuestionById(id: number): Observable<QuestionModel[]>{
-    return this.http.get<QuestionModel[]>(`${this.apiLink}/Quiz/id?id=${id}`)
+  getQuestionById(id: number): Observable<QuestionModel>{
+    return this.http.get<QuestionModel>(`${this.apiLink}/Quiz/id?id=${id}`)
       .pipe(
-        tap(ans => 
-          {
-            console.log(ans);
-            // this.quest$.next(ans)
-          })
+        tap(ans => this.quest$.next(ans))
+      );
+  }
+
+  getAnswers(): Observable<AnswersModel[]>{
+    return this.http.get<AnswersModel[]>(`${this.apiLink}/Quiz`)
+      .pipe(
+        tap(answers => this.answers$.next(answers))
       );
   }
 
