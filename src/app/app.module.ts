@@ -18,6 +18,7 @@ import { GameComponent } from './components/brain/game/game.component';
 import { BrainGameService } from './services/brain-game-service';
 import { EditComponent } from './components/user/edit/edit.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
+import { PointsComponent } from './components/brain/points/points.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DeleteComponent } from './components/user/delete/delete.component';
     HeaderComponent,
     GameComponent,
     EditComponent,
-    DeleteComponent
+    DeleteComponent,
+    PointsComponent
   ],
   imports: [
     BrowserModule,

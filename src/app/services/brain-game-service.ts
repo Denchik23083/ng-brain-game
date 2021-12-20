@@ -17,6 +17,11 @@ export interface QuizzesModel{
   point: number,
 }
 
+export interface PointsModel{
+  name: string,
+  point: number,
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,6 +32,7 @@ export class BrainGameService {
   quest$ = new BehaviorSubject<QuestionModel | null>(null);
   answers$ = new BehaviorSubject<AnswersModel[]>([]);
   quizzes$ = new BehaviorSubject<QuizzesModel[]>([]);
+  points$ = new BehaviorSubject<PointsModel | null>(null);
 
   constructor(private http: HttpClient) { }  
 
@@ -48,6 +54,13 @@ export class BrainGameService {
     return this.http.post<QuizzesModel>(`${this.apiLink}/Quiz`, model)
     .pipe(
       tap(log => this.quizzes$.next([...this.quizzes$.value, log]))
+    )
+  }
+
+  getPoints(): Observable<PointsModel>{
+    return this.http.get<PointsModel>(`${this.apiLink}/Quiz`)
+    .pipe(
+      tap(pts => this.points$.next(pts))
     )
   }
 }

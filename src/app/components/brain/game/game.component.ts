@@ -42,6 +42,7 @@ export class GameComponent implements OnInit {
     if(id > 2)
     {
       id = 1;
+      this.router.navigate(['/main/quizzes/game/points']);
     }
     
     this.number = id;
