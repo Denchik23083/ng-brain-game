@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { BrainGameService, QuestionModel, AnswersModel } from 'src/app/services/brain-game-service';
 import { Router } from '@angular/router';
+import { delay } from 'rxjs/operators';
 
 let id = 1;
 
@@ -18,18 +19,20 @@ export class GameComponent implements OnInit {
   };
 
   answer: AnswersModel = {
-    answers: ''
+    id: 0,
+    answ: ''
   }
 
   quest$: BehaviorSubject<QuestionModel | null>;
-  answers$: BehaviorSubject<AnswersModel[]>;
+  answers$!: BehaviorSubject<AnswersModel[]>;
 
   constructor(private service: BrainGameService, private router: Router) {
     this.quest$ = service.quest$;
-    this.answers$ = service.answers$;
+    this.answers$ = service.answers$;    
   }
 
   number: any;
+  
 
   ngOnInit(): void {
     
@@ -40,14 +43,16 @@ export class GameComponent implements OnInit {
     {
       id = 1;
     }
-    this.service.getQuestionById(id).subscribe();    
-    this.number = id;    
+    
+    this.number = id;
+    this.service.getQuestionById(id).subscribe();
+        
     id++;
 
     this.answers();
   }
 
   answers(): void {
-    this.service.getAnswers().subscribe(); 
+    this.service.getQuestionById(id).subscribe();
   }
 }

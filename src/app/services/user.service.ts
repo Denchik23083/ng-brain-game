@@ -47,7 +47,7 @@ export class UserService {
   getPoints(): Observable<StatisticsModel[]>{
     return this.http.get<StatisticsModel[]>(this.statisticsLink)
       .pipe(
-        tap(books => this.statistics$.next(books))
+        tap(point => this.statistics$.next(point))
       );
   }
 }

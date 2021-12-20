@@ -6,8 +6,8 @@
     <br>
     <h2 class="h1">{{number}}) {{quest.question}}</h2>
 </div>
-<div *ngFor="let answer of (answers$ | async)">
+<div *ngFor="let ans of (answers$ | async)">
     <br>
-    <h2 class="h1">{{answer.answers}}</h2>
+    <h2 class="h1">{{ans.id}}) {{ans.answ}}</h2>
 </div>
 

@@ -8,7 +8,8 @@ export interface QuestionModel{
 }
 
 export interface AnswersModel{
-  answers: string
+  id: number,
+  answ: string
 }
 
 export interface QuizzesModel{
@@ -37,7 +38,7 @@ export class BrainGameService {
   }
 
   getAnswers(): Observable<AnswersModel[]>{
-    return this.http.get<AnswersModel[]>(`${this.apiLink}/Quiz`)
+    return this.http.get<AnswersModel[]>(`${this.apiLink}/Answers`)
       .pipe(
         tap(answers => this.answers$.next(answers))
       );
