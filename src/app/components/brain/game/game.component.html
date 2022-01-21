@@ -5,12 +5,9 @@
 <div *ngIf="quest$ | async as quest">
     <br>
     <h2 class="h1">{{number}}) {{quest.question}}</h2>
-    <br>
-
-
 </div>
-<div *ngFor="let ans of (answers$ | async)">
+<div *ngFor="let item of answers">
     <br>
-    <h2 class="h1">{{ans.id}}) {{ans.answ}}</h2>
+    <h2 (click)="foo(item)" class="ans">&nbsp;{{item}}</h2>
 </div>
 

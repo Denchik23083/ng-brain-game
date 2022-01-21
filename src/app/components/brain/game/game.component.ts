@@ -3,8 +3,6 @@ import { BehaviorSubject } from 'rxjs';
 import { BrainGameService, QuestionModel, AnswersModel } from 'src/app/services/brain-game-service';
 import { Router } from '@angular/router';
 
-
-
 let id = 1;
 
 @Component({
@@ -15,31 +13,17 @@ let id = 1;
 
 export class GameComponent implements OnInit {
 
-  quest: QuestionModel = {
-    id: 0,
-    question: '',
-    answers: ''
-  };
-
-  answer: AnswersModel = {
-    id: 0,
-    answ: ''
-  }
-
   quest$: BehaviorSubject<QuestionModel | null>;
-  answers$!: BehaviorSubject<AnswersModel[]>;
 
   constructor(private service: BrainGameService, private router: Router) {
-    this.quest$ = service.quest$;
-    this.answers$ = service.answers$;    
+    this.quest$ = service.quest$; 
   }
 
   number: any;
-  
+  answers: any;
+  iter = [1, 2, 3];
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
   load(): void {    
 
@@ -50,28 +34,13 @@ export class GameComponent implements OnInit {
     }
     
     this.number = id;
-    this.service.getQuestionById(id).subscribe();
-   
-    const array = this.service.quest$.value?.answers.split(',');
-    console.log(array);
-    
-    //debugger;
-
-    const first = array![0];
-
-    console.log(first);
-    
-    // for(let i = 0; i <= 3; i++)
-    // {
-    //   this.answer.answ = array![i];
-    // } 
-     
-    id++;
-    
-    //this.service.getAnswers().subscribe();
+    this.service.getQuestionById(id).subscribe(() => {      
+      this.answers = this.service.quest$.value?.answers.split(',') as any;
+      id++;
+    });
   }
 
-  answers(): void {
-    
+  foo(answer: string): void {
+    console.log(answer);
   }
 }

@@ -11,7 +11,7 @@ export interface QuestionModel{
 
 export interface AnswersModel{
   id: number,
-  answ: string
+  answer: ''
 }
 
 export interface QuizzesModel{
@@ -32,7 +32,6 @@ export class BrainGameService {
   apiLink = 'https://localhost:6001/api';
   
   quest$ = new BehaviorSubject<QuestionModel | null>(null);
-  answers$ = new BehaviorSubject<AnswersModel[]>([]);
   quizzes$ = new BehaviorSubject<QuizzesModel[]>([]);
   points$ = new BehaviorSubject<PointsModel | null>(null);
 
@@ -42,13 +41,6 @@ export class BrainGameService {
     return this.http.get<QuestionModel>(`${this.apiLink}/Quiz/id?id=${id}`)
       .pipe(
         tap(ans => this.quest$.next(ans))
-      );
-  }
-
-  getAnswers(): Observable<AnswersModel[]>{
-    return this.http.get<AnswersModel[]>(`${this.apiLink}/Answers`)
-      .pipe(
-        tap(answers => this.answers$.next(answers))
       );
   }
 
