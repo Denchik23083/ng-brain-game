@@ -28,20 +28,20 @@ export class QuizzesComponent implements OnInit {
 
   animal(): void {
     this.quizzes.name = 'Animals';
-    this.service.quizzes(this.quizzes).subscribe(() => {
-      this.router.navigate(['/main/quizzes/game']);
-    });
+    this.submit();
   }
 
   plants(): void {
     this.quizzes.name = 'Plants';
-    this.service.quizzes(this.quizzes).subscribe(() => {
-      this.router.navigate(['/main/quizzes/game']);
-    });
+    this.submit();
   }
 
   mushrooms(): void {
     this.quizzes.name = 'Mushrooms';
+    this.submit();
+  }
+
+  submit() : void {
     this.service.quizzes(this.quizzes).subscribe(() => {
       this.router.navigate(['/main/quizzes/game']);
     });

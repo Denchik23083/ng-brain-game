@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { BrainGameService, QuestionModel, AnswersModel } from 'src/app/services/brain-game-service';
 import { Router } from '@angular/router';
-import { delay } from 'rxjs/operators';
+
+
 
 let id = 1;
 
@@ -15,7 +16,9 @@ let id = 1;
 export class GameComponent implements OnInit {
 
   quest: QuestionModel = {
-    question: ''
+    id: 0,
+    question: '',
+    answers: ''
   };
 
   answer: AnswersModel = {
@@ -39,6 +42,7 @@ export class GameComponent implements OnInit {
   }
 
   load(): void {    
+
     if(id > 2)
     {
       id = 1;
@@ -47,13 +51,27 @@ export class GameComponent implements OnInit {
     
     this.number = id;
     this.service.getQuestionById(id).subscribe();
-        
-    id++;
+   
+    const array = this.service.quest$.value?.answers.split(',');
+    console.log(array);
+    
+    //debugger;
 
-    this.answers();
+    const first = array![0];
+
+    console.log(first);
+    
+    // for(let i = 0; i <= 3; i++)
+    // {
+    //   this.answer.answ = array![i];
+    // } 
+     
+    id++;
+    
+    //this.service.getAnswers().subscribe();
   }
 
   answers(): void {
-    this.service.getQuestionById(id).subscribe();
+    
   }
 }

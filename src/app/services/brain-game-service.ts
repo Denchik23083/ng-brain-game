@@ -4,7 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
 export interface QuestionModel{
+  id: number
   question: string
+  answers: string
 }
 
 export interface AnswersModel{
