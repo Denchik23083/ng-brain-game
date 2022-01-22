@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { BrainGameService, QuestionModel, AnswersModel } from 'src/app/services/brain-game-service';
+import { BrainGameService, QuestionModel, CorrectsModel } from 'src/app/services/brain-game-service';
 import { Router } from '@angular/router';
 
 let id = 1;
@@ -15,6 +15,11 @@ export class GameComponent implements OnInit {
 
   quest$: BehaviorSubject<QuestionModel | null>;
 
+  correct: CorrectsModel = {
+    id: 0,
+    correctAnswer: ''
+  };
+
   constructor(private service: BrainGameService, private router: Router) {
     this.quest$ = service.quest$; 
   }
@@ -23,24 +28,24 @@ export class GameComponent implements OnInit {
   answers: any;
   iter = [1, 2, 3];
 
-  ngOnInit(): void { }
-
-  load(): void {    
-
+  ngOnInit(): void {
     if(id > 2)
     {
-      id = 1;
       this.router.navigate(['/main/quizzes/game/points']);
+      id = 1;
     }
-    
     this.number = id;
     this.service.getQuestionById(id).subscribe(() => {      
       this.answers = this.service.quest$.value?.answers.split(',') as any;
-      id++;
     });
   }
 
   foo(answer: string): void {
-    console.log(answer);
+    this.correct.correctAnswer = answer;
+    
+    this.service.corrects(this.correct).subscribe(() => {
+      id++;
+      this.ngOnInit();
+    });
   }
 }

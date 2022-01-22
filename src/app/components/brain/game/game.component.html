@@ -1,13 +1,11 @@
 <app-header></app-header>
 
-<button (click)="load()">But</button>
-
 <div *ngIf="quest$ | async as quest">
     <br>
     <h2 class="h1">{{number}}) {{quest.question}}</h2>
-</div>
-<div *ngFor="let item of answers">
-    <br>
-    <h2 (click)="foo(item)" class="ans">&nbsp;{{item}}</h2>
-</div>
+</div>   
 
+<div *ngFor="let item of answers; let i = index;" class="answ">
+    <br>
+    <h2 (click)="foo(item)" class="ans">{{iter[i]}}&nbsp;{{item}}</h2>
+</div>
