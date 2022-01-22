@@ -11,6 +11,7 @@ import { EditComponent } from './components/user/edit/edit.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
 import { MainComponent } from './components/utilities/main/main.component';
 import { PointsComponent } from './components/brain/points/points.component';
+import { NewComponent } from './components/brain/new/new.component';
 
 const routes: Routes = [
   { path: '', component: AuthComponent},
@@ -20,8 +21,9 @@ const routes: Routes = [
   { path: 'main/profile', component: ProfileComponent},
   { path: 'main/statistics', component: StatisticsComponent},
   { path: 'main/quizzes', component: QuizzesComponent},
-  { path: 'main/quizzes/game', component: GameComponent},
-  { path: 'main/quizzes/game/points', component: PointsComponent},
+  { path: 'main/quizzes/new', component: NewComponent},
+  { path: 'main/quizzes/new/game', component: GameComponent},
+  { path: 'main/quizzes/new/game/points', component: PointsComponent},
   { path: 'main/profile/edit', component: EditComponent},
   { path: 'main/profile/delete', component: DeleteComponent},
 ];

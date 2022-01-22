@@ -43,8 +43,7 @@ export class QuizzesComponent implements OnInit {
 
   submit() : void {
     this.service.quizzes(this.quizzes).subscribe(() => {
-      this.router.navigate(['/main/quizzes/game']);
+      this.router.navigate(['/main/quizzes/new']);
     });
   }
-
 }

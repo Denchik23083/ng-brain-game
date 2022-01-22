@@ -19,6 +19,7 @@ import { BrainGameService } from './services/brain-game-service';
 import { EditComponent } from './components/user/edit/edit.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
 import { PointsComponent } from './components/brain/points/points.component';
+import { NewComponent } from './components/brain/new/new.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PointsComponent } from './components/brain/points/points.component';
     GameComponent,
     EditComponent,
     DeleteComponent,
-    PointsComponent
+    PointsComponent,
+    NewComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,7 @@ import { PointsComponent } from './components/brain/points/points.component';
     HttpClientModule,
     NgbModule,
   ],
-  providers: [BrainGameService, GameComponent, ProfileComponent],
+  providers: [BrainGameService, GameComponent, ProfileComponent, NewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

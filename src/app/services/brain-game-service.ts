@@ -52,6 +52,10 @@ export class BrainGameService {
     )
   }
 
+  removePoints(): Observable<{}>{
+    return this.http.delete(`${this.apiLink}/Quiz`);
+  }
+
   quizzes(model: QuizzesModel): Observable<QuizzesModel>{
     return this.http.post<QuizzesModel>(`${this.apiLink}/Quiz`, model)
     .pipe(
