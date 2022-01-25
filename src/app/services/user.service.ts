@@ -10,6 +10,7 @@ export interface UserModel{
 }
 
 export interface StatisticsModel{
+  id: number,
   name: string,
   point: number,
 }
@@ -49,5 +50,9 @@ export class UserService {
       .pipe(
         tap(point => this.statistics$.next(point))
       );
+  }
+
+  clear(): Observable<{}>{
+    return this.http.delete(this.statisticsLink);
   }
 }

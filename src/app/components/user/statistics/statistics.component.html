@@ -6,6 +6,10 @@
     </div>
     <div *ngFor="let stat of (statistics$ | async)" >
         <br>
-        {{stat.name}}  {{stat.point}} / 10<br>
+        {{stat.id}}) {{stat.name}}  {{stat.point}} / 10<br>
+    </div>
+
+    <div class="button">
+        <button class="links" (click)="clear()">Reset</button>
     </div>
 </div>

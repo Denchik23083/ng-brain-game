@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 })
 export class StatisticsComponent implements OnInit {
 
-  
-
   statistics$!: BehaviorSubject<StatisticsModel[]>;
 
   constructor(private service: UserService, private router: Router) {
@@ -19,8 +17,12 @@ export class StatisticsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getPoints().subscribe(() => {
-      console.log(this.statistics$);
+    this.service.getPoints().subscribe();
+  }
+
+  clear(): void {
+    this.service.clear().subscribe(() => {
+      this.ngOnInit();
     });
   }
 
