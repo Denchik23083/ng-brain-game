@@ -1,13 +1,24 @@
 <app-header></app-header>
 
 <div class="body">
-    <div class="button">
-        <button routerLink="/main" class="link">Back</button>
-    </div>
-    <div *ngFor="let stat of (statistics$ | async)" >
-        <br>
-        {{stat.id}}) {{stat.name}}  {{stat.point}} / 10<br>
-    </div>
+    <span routerLink="/main" class="close"></span>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr scope="col">
+                <td><strong>Number</strong></td>
+                <td><strong>Theme</strong></td>
+                <td><strong>Point</strong></td>
+            </tr>
+        </thead>
+        <tbody *ngFor="let stat of (statistics$ | async)" >            
+            <tr scope="row">
+                <td>{{stat.id}}</td>
+                <td>{{stat.name}}</td>
+                <td>{{stat.point}}</td>
+            </tr>
+        </tbody>
+    </table>
 
     <div class="button">
         <button class="links" (click)="clear()">Reset</button>

@@ -1,8 +1,6 @@
 <app-header></app-header>
 <div class="body">
-    <div class="button">
-        <button routerLink="/" class="link">Back</button>
-    </div>
+    <span routerLink="/" class="close"></span>
     <br />
     <form #form="ngForm" (ngSubmit)="submit(form)">
         <input [(ngModel)] = 'user.name' name='name' type="text" placeholder="name"/><br /><br />

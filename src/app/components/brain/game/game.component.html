@@ -7,5 +7,5 @@
 
 <div *ngFor="let item of answers; let i = index;" class="answ">
     <br>
-    <h2 (click)="foo(item)" class="ans">{{iter[i]}}&nbsp;{{item}}</h2>
+    <span class="a">{{iter[i]}})</span><input type="radio" (click)="foo(item)" class="ans"><span class="a">{{item}}</span>
 </div>

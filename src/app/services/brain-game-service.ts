@@ -53,7 +53,7 @@ export class BrainGameService {
   }
 
   removePoints(): Observable<{}>{
-    return this.http.delete(`${this.apiLink}/Quiz`);
+    return this.http.delete(`${this.apiLink}/Point`);
   }
 
   quizzes(model: QuizzesModel): Observable<QuizzesModel>{
@@ -64,7 +64,7 @@ export class BrainGameService {
   }
 
   getPoints(): Observable<PointsModel>{
-    return this.http.get<PointsModel>(`${this.apiLink}/Quiz`)
+    return this.http.get<PointsModel>(`${this.apiLink}/Point`)
     .pipe(
       tap(pts => this.points$.next(pts))
     )

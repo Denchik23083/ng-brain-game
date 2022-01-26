@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { BrainGameService, QuestionModel, CorrectsModel } from 'src/app/services/brain-game-service';
 import { Router } from '@angular/router';
+import { NewComponent } from '../new/new.component';
 
 let id = 1;
 
@@ -20,7 +21,7 @@ export class GameComponent implements OnInit {
     correctAnswer: ''
   };
 
-  constructor(private service: BrainGameService, private router: Router) {
+  constructor(private service: BrainGameService, private router: Router, public count: NewComponent) {
     this.quest$ = service.quest$; 
   }
 

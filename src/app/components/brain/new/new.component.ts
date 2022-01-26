@@ -9,6 +9,8 @@ import { BrainGameService } from 'src/app/services/brain-game-service';
 })
 export class NewComponent implements OnInit {
 
+  count: any;
+
   constructor(private service: BrainGameService, private router: Router) { }
 
   ngOnInit(): void {

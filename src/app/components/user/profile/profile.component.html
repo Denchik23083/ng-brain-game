@@ -1,22 +1,19 @@
 <app-header></app-header>
 <div class="body">
-    <div class="but">
-        <button routerLink="/main">Back</button>
-    </div>
-</div>
-
-<div class="container">
-	<div class="ava">
-		<img src="assets/av_256.png" class="av_256">
-	</div>
-	<div class="danie">			  
-		<div *ngIf="users$ | async as user">
-			<br>
-			<p class="Name">Name: {{user.name}}</p>
-			<p class="Name">Email: {{user.email}}</p>
+	<span routerLink="/main" class="close"></span>
+	<div class="container">
+		<div class="ava">
+			<img src="assets/av_256.png" class="av_256">
 		</div>
+		<div class="danie">			  
+			<div *ngIf="users$ | async as user">
+				<br>
+				<p class="Name">Name: {{user.name}}</p>
+				<p class="Name">Email: {{user.email}}</p>
+			</div>
 
-		<button class="edit" routerLink="/main/profile/edit">Edit</button>
-		<button class="del" routerLink="/main/profile/delete">Delete</button>
+			<button class="edit" routerLink="/main/profile/edit">Edit</button>
+			<button class="del" routerLink="/main/profile/delete">Delete</button>
+		</div>
 	</div>
 </div>
