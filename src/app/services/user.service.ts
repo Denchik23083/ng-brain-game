@@ -6,7 +6,11 @@ import { tap } from 'rxjs/operators';
 export interface UserModel{
   name: string,
   email: string,
+}
+
+export interface PasswordModel{
   password: string,
+  confirmPassword: string,
 }
 
 export interface StatisticsModel{
@@ -24,6 +28,7 @@ export class UserService {
 
   statistics$ = new BehaviorSubject<StatisticsModel[]>([]);
   users$ = new BehaviorSubject<UserModel | null>(null);
+  passwords$ = new BehaviorSubject<PasswordModel | null>(null);
 
   constructor(private http: HttpClient) { }
 
@@ -38,6 +43,13 @@ export class UserService {
     return this.http.put<UserModel>(`${this.apiLink}/User`, model)
       .pipe(
         tap(created => this.users$.next(created))
+      )
+  }
+
+  password(model: PasswordModel): Observable<PasswordModel>{
+    return this.http.post<PasswordModel>(`${this.apiLink}/User`, model)
+      .pipe(
+        tap(created => this.passwords$.next(created))
       )
   }
 

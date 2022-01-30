@@ -13,7 +13,6 @@ export class ProfileComponent implements OnInit {
   user: UserModel = {
     name: '',
     email: '',
-    password: ''
   };
 
   users$: BehaviorSubject<UserModel | null>;  

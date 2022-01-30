@@ -37,18 +37,18 @@
 }
 
 .block1 hr{
-    border-color: rgb(199, 60, 60);   
+    border: rgb(199, 60, 60);   
     color: rgb(199, 60, 60);
     background-color: rgb(199, 60, 60);
 }
 .block2 hr{
-    border-color: rgb(186, 142, 39);    
+    border: rgb(186, 142, 39);    
     color: rgb(186, 142, 39);
     background-color: rgb(186, 142, 39);
 }
 
 .block3 hr{
-    border-color: rgb(42, 69, 219);    
+    border: rgb(42, 69, 219);    
     color: rgb(42, 69, 219);
     background-color: rgb(42, 69, 219);
 }
@@ -64,14 +64,17 @@
 }
 
 .red-buy{    
-    background-color: rgb(199, 60, 60);    
+    background-color: rgb(199, 60, 60); 
+    border: rgb(199, 60, 60);      
 }
 .orange-buy{
     background-color: rgb(186, 142, 39);
+    border: rgb(186, 142, 39);  
 }
 
 .blue-buy{
     background-color: rgb(42, 69, 219);
+    border: rgb(42, 69, 219);    
 }
 .close {
     position: absolute;

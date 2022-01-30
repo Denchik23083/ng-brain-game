@@ -69,4 +69,8 @@ export class BrainGameService {
       tap(pts => this.points$.next(pts))
     )
   }
+
+  result(): Observable<{}>{
+    return this.http.post<{}>(`${this.apiLink}/Point`, null);
+  }
 }

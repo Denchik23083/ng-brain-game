@@ -13,7 +13,6 @@ export class EditComponent implements OnInit {
   user: UserModel = {
     name: '',
     email: '',
-    password: ''
   };
 
   constructor(private readonly service: UserService, private router: Router) { }

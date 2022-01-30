@@ -10,7 +10,6 @@
     padding-top: 10px;
     margin: 10px;
 }
-
 .block1:hover{
     transition: 1s ease-in;
     transform: scale(1.05);
@@ -28,4 +27,5 @@
 
 .red-buy{    
     background-color: rgb(199, 60, 60);    
+    border: rgb(199, 60, 60);
 }

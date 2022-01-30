@@ -20,6 +20,7 @@ import { EditComponent } from './components/user/edit/edit.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
 import { PointsComponent } from './components/brain/points/points.component';
 import { NewComponent } from './components/brain/new/new.component';
+import { PasswordComponent } from './components/user/password/password.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NewComponent } from './components/brain/new/new.component';
     EditComponent,
     DeleteComponent,
     PointsComponent,
-    NewComponent
+    NewComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,

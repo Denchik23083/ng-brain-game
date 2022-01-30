@@ -39,11 +39,11 @@
 	border: 0px;
 	border-radius: 4px;
 }
-.edit, .del{	
+.edit, .del, .password{	
 	width: 250px;
 	height: 50px;
 	text-align: center;
-	margin: 20px;
+	margin: 5px;
   	margin-left: 120px;
 	border: 0px;
 	border-radius: 4px;
@@ -52,6 +52,7 @@
 }
 .edit{background-color: rgb(184, 92, 7);}
 .del{background-color: rgb(204, 6, 6);}
+.password{background-color: #28a745;}
 .danie{
 	width: 500px;
 	height: 350px;
