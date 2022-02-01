@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BrainGameService, QuizzesModel } from 'src/app/services/brain-game-service';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
-import { GameComponent } from '../game/game.component';
 
 @Component({
   selector: 'app-quizzes',
@@ -18,13 +17,11 @@ export class QuizzesComponent implements OnInit {
 
   quizzes$!: BehaviorSubject<QuizzesModel[]>;
 
-  constructor(private service: BrainGameService, private router: Router, private game: GameComponent) { 
+  constructor(private service: BrainGameService, private router: Router) { 
     this.quizzes$ = service.quizzes$;
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
   animal(): void {
     this.quizzes.name = 'Animals';

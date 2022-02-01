@@ -9,11 +9,6 @@ import { BrainGameService, PointsModel } from 'src/app/services/brain-game-servi
 })
 export class PointsComponent implements OnInit {
 
-  pts: PointsModel = {
-    name: '',
-    point: 0,
-  };
-
   points$: BehaviorSubject<PointsModel | null>
 
   constructor(private service: BrainGameService) {
@@ -27,5 +22,4 @@ export class PointsComponent implements OnInit {
   result(): void {
     this.service.result().subscribe();
   } 
-
 }

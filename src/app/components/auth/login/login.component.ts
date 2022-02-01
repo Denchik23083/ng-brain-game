@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService, LoginModel } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +15,7 @@ export class LoginComponent implements OnInit {
     password: '',
   };
   
-  constructor(private readonly service: AuthService, private router: Router, private https: HttpClient) { }
+  constructor(private readonly service: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -28,5 +27,4 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/main']);
     })
   }
-
 }

@@ -27,5 +27,4 @@ export class EditComponent implements OnInit {
     })
     this.router.navigate(['/main/profile']);
   }
-
 }

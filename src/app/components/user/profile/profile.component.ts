@@ -10,17 +10,11 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProfileComponent implements OnInit {
 
-  user: UserModel = {
-    name: '',
-    email: '',
-  };
-
   users$: BehaviorSubject<UserModel | null>;  
 
   constructor(private service: UserService, private router: Router) {
     this.users$ = service.users$;
-    console.log(this.users$);
-   }
+  }
 
   ngOnInit(): void {
     this.service.get().subscribe();

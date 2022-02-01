@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StatisticsModel, UserService } from 'src/app/services/user.service';
 import { BehaviorSubject } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-statistics',
@@ -10,9 +9,9 @@ import { Router } from '@angular/router';
 })
 export class StatisticsComponent implements OnInit {
 
-  statistics$!: BehaviorSubject<StatisticsModel[]>;
+  statistics$: BehaviorSubject<StatisticsModel[]>;
 
-  constructor(private service: UserService, private router: Router) {
+  constructor(private service: UserService) {
     this.statistics$ = service.statistics$;
   }
 
@@ -25,5 +24,4 @@ export class StatisticsComponent implements OnInit {
       this.ngOnInit();
     });
   }
-
 }
