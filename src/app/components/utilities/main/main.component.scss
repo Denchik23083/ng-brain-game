@@ -9,12 +9,17 @@
     text-align: center;
     padding-top: 10px;
     margin: 10px;
+    background: url("/assets/planet.jpg") no-repeat;
+    background-size: cover;
 }
 .block1:hover{
     transition: 1s ease-in;
     transform: scale(1.05);
 }
-.h1{text-align: center;}
+.h1{
+    text-align: center; 
+    color: white;
+}
 .red-buy{
     height: 60px;
     width: 150px;
@@ -23,9 +28,6 @@
     margin-left: 10px;
     color: white;
     font-size: 25px;
-}
-
-.red-buy{    
     background-color: rgb(199, 60, 60);    
     border: rgb(199, 60, 60);
 }

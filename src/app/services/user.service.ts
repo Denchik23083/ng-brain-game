@@ -9,7 +9,8 @@ export interface UserModel{
 }
 
 export interface PasswordModel{
-  password: string,
+  oldPassword: string,
+  newPassword: string,
   confirmPassword: string,
 }
 

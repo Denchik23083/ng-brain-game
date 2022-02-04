@@ -11,7 +11,8 @@ import { PasswordModel, UserService } from 'src/app/services/user.service';
 export class PasswordComponent implements OnInit {
 
   password: PasswordModel = {
-    password: '',
+    oldPassword: '',
+    newPassword: '',
     confirmPassword: '',
   };
 
@@ -25,6 +26,6 @@ export class PasswordComponent implements OnInit {
     this.service.password(newPassword).subscribe(() => {
       form.resetForm();
     })
-    this.router.navigate(['/main/profile']);
+    this.router.navigate(['/']);
   }
 }

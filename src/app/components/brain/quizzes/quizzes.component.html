@@ -1,22 +1,22 @@
-<app-header></app-header>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-success text-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto dont-weight-normal">BrainGame</h5>
+    <nav><a class="p-2 text-white text-decoration-none" routerLink="/main/quizzes/statistics">Statistics</a></nav>
+</div>
 <div class="body">
     <span routerLink="/main" class="close"></span>
 </div>
 
 <div class="container">
     <div class="block1">
-        <h2>Animals</h2>
-        <hr>    
+        <h2 class="h2">Animals</h2>
         <button class="red-buy" (click)="animal()">New Game</button>        
     </div>
     <div class="block2">
-        <h2>Plants</h2>
-        <hr>   
+        <h2 class="h2">Plants</h2>
         <button class="orange-buy" (click)="plants()">New Game</button>    
     </div>
     <div class="block3">
-        <h2>Mushrooms</h2>
-        <hr>   
+        <h2 class="h2">Mushrooms</h2>
         <button class="blue-buy" (click)="mushrooms()">New Game</button>    
     </div>
 </div>

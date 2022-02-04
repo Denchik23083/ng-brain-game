@@ -5,10 +5,17 @@
     text-decoration: none;
     color: black;
 }
-.body{
-    margin: 10px;
+
+img{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: auto;
 }
 
 .h1{
     text-align: center;
+    position: absolute;
+    left: 100px;
+    right: 100px;
 }
