@@ -25,6 +25,6 @@ export class EditComponent implements OnInit {
     this.service.edit(newUser).subscribe(() => {
       form.resetForm();
     })
-    this.router.navigate(['/main/profile']);
+    this.router.navigate(['/']);
   }
 }
