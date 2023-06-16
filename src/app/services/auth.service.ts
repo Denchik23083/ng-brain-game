@@ -1,10 +1,22 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
+export interface TokenModel {
+  jwtToken: string;
+  refreshToken: string;
+}
+
+export interface TokenData {
+  email: string;
+  name: string;
+  expires: Date;
+  rawToken: string;
+}
 
 export interface RegisterModel{
-  id?: number,
   name: string,
   email: string,
   password: string,
@@ -12,7 +24,6 @@ export interface RegisterModel{
 }
 
 export interface LoginModel{
-  id?: number,
   email: string,
   password: string,
 }
@@ -23,22 +34,27 @@ export interface LoginModel{
 export class AuthService {
   apiLink = 'https://localhost:5001/api';
 
-  registered$ = new BehaviorSubject<RegisterModel[]>([]);
-  logined$ = new BehaviorSubject<LoginModel[]>([]);
+  constructor(private http: HttpClient, private router: Router) { }
 
-  constructor(private http: HttpClient) { }
-
-  register(model: RegisterModel): Observable<RegisterModel>{
-    return this.http.post<RegisterModel>(`${this.apiLink}/Register`, model)
-      .pipe(
-        tap(reg => this.registered$.next([...this.registered$.value, reg]))
-      )
+  register(model: RegisterModel){
+    return this.http.post<RegisterModel>(`${this.apiLink}/register`, model)
+      .pipe(tap(() => this.router.navigate(['/login'])));
   }
 
   login(model: LoginModel): Observable<LoginModel>{
-    return this.http.post<LoginModel>(`${this.apiLink}/Login`, model)
-      .pipe(
-        tap(log => this.logined$.next([...this.logined$.value, log]))
-      )
+    return this.http.post<LoginModel>(`${this.apiLink}/login`, model)
+      .pipe(tap(() => this.router.navigate(['/main'])));
+  }
+
+  getTokenData(token: string): TokenData {
+    const payloadBase64 = token.split('.')[1];
+    const payload = JSON.parse(atob(payloadBase64));
+
+    return {
+      name: payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'] as string,
+      email: payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'] as string,
+      expires: new Date(payload.exp * 1000),
+      rawToken: token
+    };
   }
 }

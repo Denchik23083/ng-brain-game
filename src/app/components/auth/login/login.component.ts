@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, LoginModel } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -15,16 +13,12 @@ export class LoginComponent implements OnInit {
     password: '',
   };
   
-  constructor(private readonly service: AuthService, private router: Router) { }
+  constructor(private readonly service: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  submit(form: NgForm): void {
-    const user = form.value as LoginModel;
-    this.service.login(user).subscribe(() => {
-      form.resetForm();
-      this.router.navigate(['/main']);
-    })
+  submit(): void {
+    this.service.login(this.user).subscribe();
   }
 }

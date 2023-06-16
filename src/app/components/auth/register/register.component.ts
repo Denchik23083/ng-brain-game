@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService, RegisterModel } from 'src/app/services/auth.service';
 
 @Component({
@@ -17,16 +15,12 @@ export class RegisterComponent implements OnInit {
     confirmPassword: '',
   };
   
-  constructor(private readonly service: AuthService, private router: Router) { }
+  constructor(private readonly service: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  submit(form: NgForm): void {
-    const newUser = form.value as RegisterModel;
-    this.service.register(newUser).subscribe(() => {
-      form.resetForm();
-      this.router.navigate(['/login']);
-    })
+  submit(): void {
+    this.service.register(this.user).subscribe();
   }
 }
