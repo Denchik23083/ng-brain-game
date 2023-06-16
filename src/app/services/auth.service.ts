@@ -10,10 +10,10 @@ export interface TokenModel {
 }
 
 export interface TokenData {
-  email: string;
-  name: string;
-  expires: Date;
-  rawToken: string;
+  email: string,
+  name: string,
+  expires: Date,
+  rawToken: string,
 }
 
 export interface RegisterModel{
@@ -33,6 +33,10 @@ export interface LoginModel{
 })
 export class AuthService {
   apiLink = 'https://localhost:5001/api';
+  //tokenKey = 'jwtToken';
+
+  tokenData$ = new BehaviorSubject<TokenData>(null as any);
+  refreshToken$ = new BehaviorSubject<string>(null as any);
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -41,9 +45,17 @@ export class AuthService {
       .pipe(tap(() => this.router.navigate(['/login'])));
   }
 
-  login(model: LoginModel): Observable<LoginModel>{
-    return this.http.post<LoginModel>(`${this.apiLink}/login`, model)
-      .pipe(tap(() => this.router.navigate(['/main'])));
+  login(model: LoginModel): Observable<TokenData>{
+    return this.http.post<TokenModel>(`${this.apiLink}/login`, model)
+      .pipe(
+        tap(model => {
+          console.log(model);
+          //this.refreshToken$.next(model.refreshToken);
+          ///this.tokenData$.next(this.getTokenData(model.jwtToken));
+          //localStorage.setItem(this.tokenKey, model.jwtToken);
+        }),
+        map(model => this.getTokenData(model.jwtToken)),
+        tap(/*() => this.router.navigate(['/'])*/));
   }
 
   getTokenData(token: string): TokenData {
