@@ -10,8 +10,9 @@ export interface TokenModel {
 }
 
 export interface TokenData {
-  email: string,
   name: string,
+  email: string,
+  gender: string,
   expires: Date,
   rawToken: string,
 }
@@ -70,6 +71,7 @@ export class AuthService {
     return {
       name: payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'] as string,
       email: payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'] as string,
+      gender: payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/gender'] as string,
       expires: new Date(payload.exp * 1000),
       rawToken: token
     };

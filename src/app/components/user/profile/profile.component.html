@@ -3,13 +3,21 @@
 	<span routerLink="/main" class="close"></span>
 	<div class="container">
 		<div class="ava">
-			<img src="assets/av_256.png" class="av_256">
+			<div *ngIf="user$ | async as user">
+				<div *ngIf="user.gender === 'Male'">
+					<img src="assets/male.png" class="male">
+				</div>
+				<div *ngIf="user.gender === 'Female'">
+					<img src="assets/female.png" class="female">
+				</div>				
+			</div>
+			
 		</div>
 		<div class="danie">			  
 			<div *ngIf="user$ | async as user">
-				<br>
 				<p class="Name">Name: {{user.name}}</p>
 				<p class="Name">Email: {{user.email}}</p>
+				<p class="Name">Gender: {{user.gender}}</p>
 			</div>
 
 			<button class="edit" routerLink="/main/profile/edit">Edit Info</button>
@@ -18,3 +26,6 @@
 		</div>
 	</div>
 </div>
+
+<ng-template #male>Content to render when condition is false.</ng-template>
+<ng-template #female><img src="assets/av_256.png" class="av_256"></ng-template>
