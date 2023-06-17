@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService, UserModel } from 'src/app/services/user.service';
-import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { AuthService, TokenData } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,13 +9,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProfileComponent implements OnInit {
 
-  users$: BehaviorSubject<UserModel | null>;  
+  user$: BehaviorSubject<TokenData>;  
 
-  constructor(private service: UserService, private router: Router) {
-    this.users$ = service.users$;
+  constructor(authService: AuthService) {
+    this.user$ = authService.tokenData$;
   }
 
   ngOnInit(): void {
-    this.service.get().subscribe();
   }
 }

@@ -6,7 +6,7 @@
 			<img src="assets/av_256.png" class="av_256">
 		</div>
 		<div class="danie">			  
-			<div *ngIf="users$ | async as user">
+			<div *ngIf="user$ | async as user">
 				<br>
 				<p class="Name">Name: {{user.name}}</p>
 				<p class="Name">Email: {{user.email}}</p>
