@@ -33,12 +33,12 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  get(): Observable<UserModel>{
+  /*get(): Observable<UserModel>{
     return this.http.get<UserModel>(`${this.apiLink}/User`)
       .pipe(
         tap(user => this.users$.next(user))
       );
-  }
+  }*/
 
   edit(model: UserModel): Observable<UserModel>{
     return this.http.put<UserModel>(`${this.apiLink}/User`, model)

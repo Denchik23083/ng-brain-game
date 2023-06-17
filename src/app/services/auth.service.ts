@@ -33,12 +33,18 @@ export interface LoginModel{
 })
 export class AuthService {
   apiLink = 'https://localhost:5001/api';
-  //tokenKey = 'jwtToken';
+  tokenKey = 'jwtToken';
 
   tokenData$ = new BehaviorSubject<TokenData>(null as any);
   refreshToken$ = new BehaviorSubject<string>(null as any);
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    const rawToken = localStorage.getItem(this.tokenKey);
+    if (rawToken) {
+        const tokenData = this.getTokenData(rawToken);
+        this.tokenData$.next(tokenData);
+      }
+    }
 
   register(model: RegisterModel){
     return this.http.post<RegisterModel>(`${this.apiLink}/register`, model)
@@ -49,13 +55,12 @@ export class AuthService {
     return this.http.post<TokenModel>(`${this.apiLink}/login`, model)
       .pipe(
         tap(model => {
-          console.log(model);
-          //this.refreshToken$.next(model.refreshToken);
-          ///this.tokenData$.next(this.getTokenData(model.jwtToken));
-          //localStorage.setItem(this.tokenKey, model.jwtToken);
+          this.refreshToken$.next(model.refreshToken);
+          this.tokenData$.next(this.getTokenData(model.jwtToken));
+          localStorage.setItem(this.tokenKey, model.jwtToken);
         }),
         map(model => this.getTokenData(model.jwtToken)),
-        tap(/*() => this.router.navigate(['/'])*/));
+        tap(() => this.router.navigate(['/main'])));
   }
 
   getTokenData(token: string): TokenData {
