@@ -16,6 +16,5 @@ export class DeleteComponent implements OnInit {
 
   remove(): void { 
     this.service.remove().subscribe();
-    this.router.navigate(['/']);
   }
 }

@@ -21,10 +21,8 @@ export class EditComponent implements OnInit {
   }
 
   submit(form: NgForm): void {
-    const newUser = form.value as UserModel;
-    this.service.edit(newUser).subscribe(() => {
-      form.resetForm();
-    })
-    this.router.navigate(['/']);
+    const editUser = form.value as UserModel;
+    
+    this.service.edit(editUser).subscribe();
   }
 }

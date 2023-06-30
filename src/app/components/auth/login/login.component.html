@@ -2,9 +2,9 @@
 <div class="body">
     <span routerLink="/" class="close"></span>
     <br />
-    <form #form="ngForm" (ngSubmit)="submit()">
-        <input [(ngModel)] = 'user.email' name='email' type="email" placeholder="email"/><br /><br />
-        <input [(ngModel)] = 'user.password' type='password' name='password' placeholder="password"/><br /><br />
+    <form #form="ngForm" (ngSubmit)="submit(form)">
+        <input [(ngModel)] = 'login.email' name='email' type="email" placeholder="email"/><br /><br />
+        <input [(ngModel)] = 'login.password' type='password' name='password' placeholder="password"/><br /><br />
 
         <button type='submit'>Login</button>
     </form>
