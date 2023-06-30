@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AuthService, RegisterModel } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthService, RegisterModel } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  user: RegisterModel = {
+  register: RegisterModel = {
     name: '',
     email: '',
     password: '',
@@ -20,7 +21,9 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submit(): void {
-    this.service.register(this.user).subscribe();
+  submit(form: NgForm): void {
+    const registerUser = form.value as RegisterModel;
+
+    this.service.register(registerUser).subscribe();
   }
 }

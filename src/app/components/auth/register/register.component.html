@@ -2,11 +2,11 @@
 <div class="body">
     <span routerLink="/" class="close"></span>
     <br />
-    <form #form="ngForm" (ngSubmit)="submit()">
-        <input [(ngModel)] = 'user.name' name='name' type="text" placeholder="name"/><br /><br />
-        <input [(ngModel)] = 'user.email' name='email' type="email" placeholder="email"/><br /><br />
-        <input [(ngModel)] = 'user.password' type='password' name='password' placeholder="password"/><br /><br />
-        <input [(ngModel)] = 'user.confirmPassword' type='password' name='confirmPassword' placeholder="confirmPassword"/><br /><br />
+    <form #form="ngForm" (ngSubmit)="submit(form)">
+        <input [(ngModel)] = 'register.name' name='name' type="text" placeholder="name"/><br /><br />
+        <input [(ngModel)] = 'register.email' name='email' type="email" placeholder="email"/><br /><br />
+        <input [(ngModel)] = 'register.password' type='password' name='password' placeholder="password"/><br /><br />
+        <input [(ngModel)] = 'register.confirmPassword' type='password' name='confirmPassword' placeholder="confirmPassword"/><br /><br />
 
         <button type='submit'>Register</button>
     </form>

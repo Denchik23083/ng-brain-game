@@ -23,9 +23,7 @@ export class PasswordComponent implements OnInit {
 
   submit(form: NgForm): void {
     const newPassword = form.value as PasswordModel;
-    this.service.password(newPassword).subscribe(() => {
-      form.resetForm();
-    })
-    this.router.navigate(['/']);
+    
+    this.service.password(newPassword).subscribe();
   }
 }
