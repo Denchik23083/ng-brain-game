@@ -1,8 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
+
+export interface WeatherModel{
+  date: Date,
+  temperatureC: number,
+  summary: string
+}
 
 export interface UserModel{
   name: string,
@@ -26,15 +33,25 @@ export interface StatisticsModel{
 })
 export class UserService {
   apiLink = 'https://localhost:6001/api';
+  tokenKey = 'jwtToken';
 
   statistics$ = new BehaviorSubject<StatisticsModel[]>([]);
+  weather$ = new BehaviorSubject<WeatherModel[]>([]);
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, 
+    private router: Router) { }
+
+  weather(): Observable<WeatherModel[]>{
+    return this.http.get<WeatherModel[]>(`${this.apiLink}/weather`)
+      .pipe(
+        tap(weather => this.weather$.next(weather))
+      )
+  }
 
   edit(model: UserModel): Observable<UserModel>{
     return this.http.put<UserModel>(`${this.apiLink}/user`, model)
       .pipe(
-        tap(() => localStorage.clear()),
+        tap(() => localStorage.removeItem(this.tokenKey)),
         tap(() => this.router.navigate(['/']))
       )
   }
@@ -42,7 +59,7 @@ export class UserService {
   password(model: PasswordModel): Observable<PasswordModel>{
     return this.http.post<PasswordModel>(`${this.apiLink}/user/password`, model)
       .pipe(
-        tap(() => localStorage.clear()),
+        tap(() => localStorage.removeItem(this.tokenKey)),
         tap(() => this.router.navigate(['/']))
       )
   }
@@ -50,7 +67,7 @@ export class UserService {
   remove(): Observable<{}>{
     return this.http.delete(`${this.apiLink}/user`)
       .pipe(
-        tap(() => localStorage.clear()),
+        tap(() => localStorage.removeItem(this.tokenKey)),
         tap(() => this.router.navigate(['/']))
       );
   }

@@ -7,7 +7,7 @@ import { MainComponent } from './components/utilities/main/main.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { QuizzesComponent } from './components/brain/quizzes/quizzes.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './components/auth/auth/auth.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -21,6 +21,10 @@ import { DeleteComponent } from './components/user/delete/delete.component';
 import { PointsComponent } from './components/brain/points/points.component';
 import { NewComponent } from './components/brain/new/new.component';
 import { PasswordComponent } from './components/user/password/password.component';
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
+import { AuthInterceptor } from './utils/auth.interceptor';
+import { RefreshInterceptor } from './utils/refresh.interceptor';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,13 @@ import { PasswordComponent } from './components/user/password/password.component
     HttpClientModule,
     NgbModule,
   ],
-  providers: [BrainGameService, GameComponent, ProfileComponent, NewComponent],
+  providers: [
+    AuthService,
+    BrainGameService,
+    UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: RefreshInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
