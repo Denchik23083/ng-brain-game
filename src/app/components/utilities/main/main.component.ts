@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService, WeatherModel } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-main',
@@ -7,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  weather: WeatherModel[] = [];
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.weather()
+    .subscribe(weather => {
+      this.weather = weather;
+
+      console.log(this.weather);
+    })
   }
 }
