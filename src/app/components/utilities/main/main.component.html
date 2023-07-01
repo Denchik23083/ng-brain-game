@@ -3,6 +3,11 @@
     <nav><a class="p-2 text-white text-decoration-none" routerLink="/main/profile">Profile</a></nav>
 </div>
 
+<div *ngFor="let weath of weather">
+    {{weath.temperatureC}}  {{weath.summary}}
+</div>
+<button (click)="loadData()">Load</button>
+
 <div class="container">
     <div class="block1">
         <h1 class="h1">Quiz</h1>

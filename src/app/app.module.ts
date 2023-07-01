@@ -24,6 +24,7 @@ import { PasswordComponent } from './components/user/password/password.component
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { AuthInterceptor } from './utils/auth.interceptor';
+import { RefreshInterceptor } from './utils/refresh.interceptor';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AuthInterceptor } from './utils/auth.interceptor';
     BrainGameService,
     UserService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: RefreshInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

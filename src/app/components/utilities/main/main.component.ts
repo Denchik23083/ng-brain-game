@@ -13,11 +13,11 @@ export class MainComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.weather()
-    .subscribe(weather => {
-      this.weather = weather;
+    
+  }
 
-      console.log(this.weather);
-    })
+  loadData(): void{
+    this.userService.weather()
+    .subscribe(weather => this.weather = weather)
   }
 }

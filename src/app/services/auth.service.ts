@@ -73,6 +73,19 @@ export class AuthService {
         tap(() => this.router.navigate(['/main'])));
   }
 
+  refresh(): Observable<TokenData>{
+    return this.http.post<TokenModel>(`${this.apiLink}/login/refresh`, 
+      { value: this.refreshToken$.value })
+      .pipe(
+        tap(model => {
+          this.refreshToken$.next(model.refreshToken);
+          this.tokenData$.next(this.getTokenData(model.jwtToken));
+          localStorage.setItem(this.tokenKey, model.jwtToken);
+        }),
+        map(model => this.getTokenData(model.jwtToken))
+      );
+  }
+
   getTokenData(token: string): TokenData {
     const payloadBase64 = token.split('.')[1];
     const payload = JSON.parse(atob(payloadBase64));
