@@ -30,6 +30,8 @@ import { RefreshInterceptor } from './utils/refresh.interceptor';
 import { AuthPageComponent } from './pages/auth/auth-page/auth-page.component';
 import { LoginPageComponent } from './pages/auth/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/auth/register-page/register-page.component';
+import { MainPageComponent } from './pages/main/main-page/main-page.component';
+import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { RegisterPageComponent } from './pages/auth/register-page/register-page.
     AuthPageComponent,
     LoginPageComponent,
     RegisterPageComponent,
+    MainPageComponent,
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,

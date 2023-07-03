@@ -44,6 +44,7 @@ export enum Permission {
 export class AuthService {
   apiLink = 'https://localhost:5001/api';
   tokenKey = 'jwtToken';
+  refreshTokenKey = 'refreshToken';
 
   tokenData$ = new BehaviorSubject<TokenData>(null as any);
   refreshToken$ = new BehaviorSubject<string>(null as any);
@@ -54,6 +55,11 @@ export class AuthService {
         const tokenData = this.getTokenData(rawToken);
         this.tokenData$.next(tokenData);
       }
+
+    const refreshToken = localStorage.getItem(this.refreshTokenKey);
+      if (refreshToken) {
+        this.refreshToken$.next(refreshToken);
+      }      
     }
 
   register(model: RegisterModel){
@@ -68,6 +74,7 @@ export class AuthService {
           this.refreshToken$.next(model.refreshToken);
           this.tokenData$.next(this.getTokenData(model.jwtToken));
           localStorage.setItem(this.tokenKey, model.jwtToken);
+          localStorage.setItem(this.refreshTokenKey, model.refreshToken);
         }),
         map(model => this.getTokenData(model.jwtToken)),
         tap(() => this.router.navigate(['/main'])));
@@ -81,6 +88,7 @@ export class AuthService {
           this.refreshToken$.next(model.refreshToken);
           this.tokenData$.next(this.getTokenData(model.jwtToken));
           localStorage.setItem(this.tokenKey, model.jwtToken);
+          localStorage.setItem(this.refreshTokenKey, model.refreshToken);
         }),
         map(model => this.getTokenData(model.jwtToken))
       );
