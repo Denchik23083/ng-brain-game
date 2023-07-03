@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './components/auth/auth/auth.component';
 import { GameComponent } from './components/brain/game/game.component';
-import { LoginComponent } from './components/auth/login/login.component';
 import { QuizzesComponent } from './components/brain/quizzes/quizzes.component';
-import { ProfileComponent } from './components/user/profile/profile.component';
-import { RegisterComponent } from './components/auth/register/register.component';
 import { StatisticsComponent } from './components/user/statistics/statistics.component';
 import { EditComponent } from './components/user/edit/edit.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
-import { MainComponent } from './components/utilities/main/main.component';
 import { PointsComponent } from './components/brain/points/points.component';
 import { NewComponent } from './components/brain/new/new.component';
 import { PasswordComponent } from './components/user/password/password.component';
+import { AuthPageComponent } from './pages/auth/auth-page/auth-page.component';
+import { LoginPageComponent } from './pages/auth/login-page/login-page.component';
+import { RegisterPageComponent } from './pages/auth/register-page/register-page.component';
+import { MainPageComponent } from './pages/main/main-page/main-page.component';
+import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
 
 const routes: Routes = [
-  { path: '', component: AuthComponent},
-  { path: 'main', component: MainComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
-  { path: 'main/profile', component: ProfileComponent},
+  { path: '', component: AuthPageComponent},
+  { path: 'main', component: MainPageComponent},
+  { path: 'login', component: LoginPageComponent},
+  { path: 'register', component: RegisterPageComponent},
+  { path: 'main/profile', component: ProfilePageComponent},
   { path: 'main/quizzes/statistics', component: StatisticsComponent},
   { path: 'main/quizzes', component: QuizzesComponent},
   { path: 'main/quizzes/new', component: NewComponent},

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
-import { MainComponent } from './components/utilities/main/main.component';
+import { MainComponent } from './components/main/main.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { QuizzesComponent } from './components/brain/quizzes/quizzes.component';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +13,9 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { StatisticsComponent } from './components/user/statistics/statistics.component';
-import { HeaderComponent } from './components/utilities/header/header.component';
+import { HeaderComponent } from './components/headers/header/header.component';
+import { AuthHeaderComponent } from './components/headers/auth-header/auth-header.component';
+import { ProfileHeaderComponent } from './components/headers/profile-header/profile-header.component';
 import { GameComponent } from './components/brain/game/game.component';
 import { BrainGameService } from './services/brain-game-service';
 import { EditComponent } from './components/user/edit/edit.component';
@@ -25,6 +27,11 @@ import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { AuthInterceptor } from './utils/auth.interceptor';
 import { RefreshInterceptor } from './utils/refresh.interceptor';
+import { AuthPageComponent } from './pages/auth/auth-page/auth-page.component';
+import { LoginPageComponent } from './pages/auth/login-page/login-page.component';
+import { RegisterPageComponent } from './pages/auth/register-page/register-page.component';
+import { MainPageComponent } from './pages/main/main-page/main-page.component';
+import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -37,12 +44,19 @@ import { RefreshInterceptor } from './utils/refresh.interceptor';
     ProfileComponent,
     StatisticsComponent,
     HeaderComponent,
+    AuthHeaderComponent,
+    ProfileHeaderComponent,
     GameComponent,
     EditComponent,
     DeleteComponent,
     PointsComponent,
     NewComponent,
-    PasswordComponent
+    PasswordComponent,
+    AuthPageComponent,
+    LoginPageComponent,
+    RegisterPageComponent,
+    MainPageComponent,
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,

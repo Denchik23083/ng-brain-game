@@ -1,16 +1,8 @@
-.foo{
-    margin: 20px;
-}
-.link{
-    text-decoration: none;
-    color: black;
-}
-
-img{
-    width: 100%;
-    height: auto;
-    margin: auto;
-    padding: auto;
+.wrapper{
+    min-height: 100vh;
+    background-image: url("/assets/planet.jpg");
+    background-size: 110%;
+    background-repeat: no-repeat;
 }
 
 .h1{
