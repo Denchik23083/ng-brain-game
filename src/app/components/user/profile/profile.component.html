@@ -1,5 +1,5 @@
 <div class="body">
-	<span routerLink="/main" class="close"></span>
+	<span routerLink="/" class="close"></span>
 	<div class="container">
 		<div class="ava">
 			<div *ngIf="user$ | async as user">
@@ -19,12 +19,9 @@
 				<p class="Name">Gender: {{user.gender}}</p>
 			</div>
 
-			<button class="edit" routerLink="/main/profile/edit">Edit Info</button>
-			<button class="password" routerLink="/main/profile/edit/password">Change Password</button>
-			<button class="del" routerLink="/main/profile/delete">Delete</button>
+			<button class="edit" routerLink="/profile/edit">Edit Info</button>
+			<button class="password" routerLink="/profile/edit/password">Change Password</button>
+			<button class="logout" (click)="logout()">Logout</button>
 		</div>
 	</div>
 </div>
-
-<ng-template #male>Content to render when condition is false.</ng-template>
-<ng-template #female><img src="assets/av_256.png" class="av_256"></ng-template>

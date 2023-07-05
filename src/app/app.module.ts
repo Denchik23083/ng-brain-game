@@ -8,7 +8,6 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { QuizzesComponent } from './components/brain/quizzes/quizzes.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AuthComponent } from './components/auth/auth/auth.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './components/user/profile/profile.component';
@@ -19,7 +18,6 @@ import { ProfileHeaderComponent } from './components/headers/profile-header/prof
 import { GameComponent } from './components/brain/game/game.component';
 import { BrainGameService } from './services/brain-game-service';
 import { EditComponent } from './components/user/edit/edit.component';
-import { DeleteComponent } from './components/user/delete/delete.component';
 import { PointsComponent } from './components/brain/points/points.component';
 import { NewComponent } from './components/brain/new/new.component';
 import { PasswordComponent } from './components/user/password/password.component';
@@ -27,18 +25,17 @@ import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { AuthInterceptor } from './utils/auth.interceptor';
 import { RefreshInterceptor } from './utils/refresh.interceptor';
-import { AuthPageComponent } from './pages/auth/auth-page/auth-page.component';
 import { LoginPageComponent } from './pages/auth/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/auth/register-page/register-page.component';
 import { MainPageComponent } from './pages/main/main-page/main-page.component';
 import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
+import { StatisticsHeaderComponent } from './components/headers/statistics-header/statistics-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     QuizzesComponent,
-    AuthComponent,
     MainComponent,
     LoginComponent,
     ProfileComponent,
@@ -48,15 +45,14 @@ import { ProfilePageComponent } from './pages/user/profile-page/profile-page.com
     ProfileHeaderComponent,
     GameComponent,
     EditComponent,
-    DeleteComponent,
     PointsComponent,
     NewComponent,
     PasswordComponent,
-    AuthPageComponent,
     LoginPageComponent,
     RegisterPageComponent,
     MainPageComponent,
     ProfilePageComponent,
+    StatisticsHeaderComponent,
   ],
   imports: [
     BrowserModule,

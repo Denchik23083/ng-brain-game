@@ -20,7 +20,7 @@ export class StatisticsComponent implements OnInit {
   }
 
   clear(): void {
-    this.service.clear().subscribe(() => {
+    this.service.clearStatistics().subscribe(() => {
       this.ngOnInit();
     });
   }
