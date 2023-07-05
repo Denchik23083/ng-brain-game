@@ -77,7 +77,7 @@ export class AuthService {
           localStorage.setItem(this.refreshTokenKey, model.refreshToken);
         }),
         map(model => this.getTokenData(model.jwtToken)),
-        tap(() => this.router.navigate(['/main'])));
+        tap(() => this.router.navigate(['/'])));
   }
 
   refresh(): Observable<TokenData>{

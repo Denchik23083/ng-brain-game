@@ -33,13 +33,13 @@ export interface StatisticsModel{
 })
 export class UserService {
   apiLink = 'https://localhost:6001/api';
-  tokenKey = 'jwtToken';
 
   statistics$ = new BehaviorSubject<StatisticsModel[]>([]);
   weather$ = new BehaviorSubject<WeatherModel[]>([]);
 
   constructor(private http: HttpClient, 
-    private router: Router) { }
+    private router: Router,
+    private authService: AuthService) { }
 
   weather(): Observable<WeatherModel[]>{
     return this.http.get<WeatherModel[]>(`${this.apiLink}/weather`)
@@ -51,7 +51,7 @@ export class UserService {
   edit(model: UserModel): Observable<UserModel>{
     return this.http.put<UserModel>(`${this.apiLink}/user`, model)
       .pipe(
-        tap(() => localStorage.removeItem(this.tokenKey)),
+        tap(() => this.clearData()),
         tap(() => this.router.navigate(['/']))
       )
   }
@@ -59,18 +59,23 @@ export class UserService {
   password(model: PasswordModel): Observable<PasswordModel>{
     return this.http.post<PasswordModel>(`${this.apiLink}/user/password`, model)
       .pipe(
-        tap(() => localStorage.removeItem(this.tokenKey)),
+        tap(() => this.clearData()),
         tap(() => this.router.navigate(['/']))
       )
+  }  
+
+  logout(): void {
+    this.clearData();
+    this.router.navigate(['/']);
   }
 
-  remove(): Observable<{}>{
+  /*remove(): Observable<{}>{
     return this.http.delete(`${this.apiLink}/user`)
       .pipe(
-        tap(() => localStorage.removeItem(this.tokenKey)),
+        tap(() => localStorage.removeItem(this.authService.tokenKey)),
         tap(() => this.router.navigate(['/']))
       );
-  }
+  }*/
 
   getPoints(): Observable<StatisticsModel[]>{
     return this.http.get<StatisticsModel[]>(`${this.apiLink}/statistics`)
@@ -79,7 +84,13 @@ export class UserService {
       );
   }
 
-  clear(): Observable<{}>{
+  clearStatistics(): Observable<{}>{
     return this.http.delete(`${this.apiLink}/statistics`);
   }
+
+  clearData(): void {
+    localStorage.clear();
+    this.authService.tokenData$.next(null as any);
+    this.authService.refreshToken$.next(null as any);
+  } 
 }

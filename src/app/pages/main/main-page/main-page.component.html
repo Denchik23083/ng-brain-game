@@ -1,2 +1,8 @@
-<app-profile-header></app-profile-header>
+<span *ngIf="tokenData.value else login">
+    <app-profile-header></app-profile-header>
+</span>
 <app-main></app-main>
+
+<ng-template #login>
+    <app-auth-header></app-auth-header>
+</ng-template>
