@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService, Permission, TokenData } from 'src/app/services/auth.service';
 import { UserService, WeatherModel } from 'src/app/services/user.service';
@@ -9,17 +10,16 @@ import { UserService, WeatherModel } from 'src/app/services/user.service';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-
-  weather: WeatherModel[] = [];
+   
+  weather: WeatherModel[] = [];  
   tokenData: BehaviorSubject<TokenData>;
-  hasPermission = false;
 
-  constructor(private userService: UserService, private authService: AuthService) {
+  constructor(private userService: UserService, private authService: AuthService, private router: Router) {
     this.tokenData = authService.tokenData$;
   }
 
   ngOnInit(): void {
-    this.checkPermission();
+    
   }
 
   loadData(): void{
@@ -27,11 +27,12 @@ export class MainComponent implements OnInit {
     .subscribe(weather => this.weather = weather)
   }
 
-  checkPermission(): void {
-    if(!this.tokenData.value) {return;}
+  quiz(): void{
+    if(!this.tokenData.value) { 
+      this.router.navigate(['/login']);
+      return;
+    }
 
-    this.tokenData.value.permissions.includes(Permission.getQuiz) 
-      ? this.hasPermission = true : this.hasPermission = false;
-  }
-  
+    this.router.navigate(['/quizzes']);
+  }  
 }

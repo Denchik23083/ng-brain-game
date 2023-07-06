@@ -21,6 +21,7 @@ export interface TokenData {
 export interface RegisterModel{
   name: string,
   email: string,
+  gender: GenderModel,
   password: string,
   confirmPassword: string,
 }
@@ -28,6 +29,15 @@ export interface RegisterModel{
 export interface LoginModel{
   email: string,
   password: string,
+}
+
+export interface GenderModel {
+  type: Gender
+}
+
+export enum Gender {
+  male = 'male',
+  female = 'female'
 }
 
 export enum Permission {

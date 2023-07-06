@@ -1,9 +1,8 @@
-<app-statistics-header></app-statistics-header>
 <div class="body">
     <span routerLink="/" class="close"></span>
 </div>
 
-<div class="container">
+<div class="container" *ngIf="hasPermission else nopermission">
     <div class="block1">
         <h2 class="h2">Animals</h2>
         <button class="red-buy" (click)="animal()">New Game</button>        
@@ -17,3 +16,7 @@
         <button class="blue-buy" (click)="mushrooms()">New Game</button>    
     </div>
 </div>
+
+<ng-template #nopermission>
+    <h5>You don't have permission</h5>
+</ng-template>
