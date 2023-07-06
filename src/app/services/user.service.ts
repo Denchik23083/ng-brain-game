@@ -51,16 +51,20 @@ export class UserService {
   edit(model: UserModel): Observable<UserModel>{
     return this.http.put<UserModel>(`${this.apiLink}/user`, model)
       .pipe(
-        tap(() => this.clearData()),
-        tap(() => this.router.navigate(['/']))
+        tap(() => { 
+          this.clearData();
+          this.router.navigate(['/']);
+        })
       )
   }
 
   password(model: PasswordModel): Observable<PasswordModel>{
     return this.http.post<PasswordModel>(`${this.apiLink}/user/password`, model)
       .pipe(
-        tap(() => this.clearData()),
-        tap(() => this.router.navigate(['/']))
+        tap(() => { 
+          this.clearData();
+          this.router.navigate(['/']);
+        })
       )
   }  
 

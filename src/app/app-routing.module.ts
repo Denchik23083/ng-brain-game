@@ -11,14 +11,23 @@ import { LoginPageComponent } from './pages/auth/login-page/login-page.component
 import { RegisterPageComponent } from './pages/auth/register-page/register-page.component';
 import { MainPageComponent } from './pages/main/main-page/main-page.component';
 import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
+import { PermissionGuard } from './utils/permission.guard';
+import { Permission } from './services/auth.service';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent, pathMatch: 'full'},
   { path: 'login', component: LoginPageComponent},
   { path: 'register', component: RegisterPageComponent},
   { path: 'profile', component: ProfilePageComponent},
-  { path: 'quizzes/statistics', component: StatisticsComponent},
-  { path: 'quizzes', component: QuizzesComponent},
+  { 
+    path: 'quizzes', 
+    component: QuizzesComponent,
+    canActivate: [PermissionGuard],
+    data: { 
+      permissions: [Permission.getQuiz] 
+    }
+  },
+  { path: 'quizzes/statistics', component: StatisticsComponent},  
   { path: 'quizzes/new', component: NewComponent},
   { path: 'quizzes/new/game', component: GameComponent},
   { path: 'quizzes/new/game/points', component: PointsComponent},
@@ -28,6 +37,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [PermissionGuard]
 })
 export class AppRoutingModule { }

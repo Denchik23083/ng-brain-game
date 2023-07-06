@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
   HttpHeaders
 } from '@angular/common/http';
-import { Observable, empty, pipe } from 'rxjs';
+import { Observable, empty } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { mergeMap } from 'rxjs/operators';
