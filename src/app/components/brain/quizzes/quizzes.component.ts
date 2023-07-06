@@ -3,6 +3,8 @@ import { BrainGameService, QuizzesModel } from 'src/app/services/brain-game-serv
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService, Permission, TokenData } from 'src/app/services/auth.service';
+import { MainComponent } from '../../main/main.component';
+import { WeatherModel } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-quizzes',
@@ -15,7 +17,7 @@ export class QuizzesComponent implements OnInit {
   permissions?: Permission[];
 
   hasPermission = false;
-
+  
   quizzes: QuizzesModel = {
     name: '',
     point: 0
@@ -31,7 +33,7 @@ export class QuizzesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.checkPermission();
+    this.hasPermission = this.checkPermission(this.permissions);
   }
 
   animal(): void {
@@ -55,26 +57,22 @@ export class QuizzesComponent implements OnInit {
     });
   }
 
-  checkPermission(): void {   
-    if(!this.tokenData.value) { 
-      this.hasPermission = false;
-      return; 
+  checkPermission(requiredRermissions?: Permission[]): boolean {   
+    if(!this.tokenData.value) {
+      return false; 
     }
 
-    const requiredRermissions = this.permissions;
-
-    if(!requiredRermissions) { 
-      this.hasPermission = false;
-      return; 
+    if(!requiredRermissions) {
+      return true;
     }
 
     for(const permission of requiredRermissions){
       const hasPermission = this.tokenData.value.permissions.includes(permission);
       if (!hasPermission) {
-        this.hasPermission = false;
+        return false;
       }
     }  
     
-    this.hasPermission = true;
+    return true;
   }
 }
