@@ -31,6 +31,7 @@ import { MainPageComponent } from './pages/main/main-page/main-page.component';
 import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
 import { StatisticsHeaderComponent } from './components/headers/statistics-header/statistics-header.component';
 import { QuizzesPageComponent } from './pages/brain/quizzes-page/quizzes-page.component';
+import { CheckPermission } from './utils/check-permission';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { QuizzesPageComponent } from './pages/brain/quizzes-page/quizzes-page.co
   providers: [
     AuthService,
     BrainGameService,
-    UserService,
+    UserService,   
+    CheckPermission, 
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: RefreshInterceptor, multi: true },
   ],

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService, Permission, TokenData } from 'src/app/services/auth.service';
 import { MainComponent } from '../../main/main.component';
 import { WeatherModel } from 'src/app/services/user.service';
+import { CheckPermission } from 'src/app/utils/check-permission';
 
 @Component({
   selector: 'app-quizzes',
@@ -25,15 +26,12 @@ export class QuizzesComponent implements OnInit {
 
   quizzes$!: BehaviorSubject<QuizzesModel[]>;
 
-  tokenData: BehaviorSubject<TokenData>;
-
-  constructor(private service: BrainGameService, private authService: AuthService, private router: Router) { 
+  constructor(private service: BrainGameService, private router: Router, private checkPermission: CheckPermission) { 
     this.quizzes$ = service.quizzes$;
-    this.tokenData = authService.tokenData$;
   }
 
   ngOnInit(): void {
-    this.hasPermission = this.checkPermission(this.permissions);
+    this.hasPermission = this.checkPermission.checkPermission(this.permissions);
   }
 
   animal(): void {
@@ -55,24 +53,5 @@ export class QuizzesComponent implements OnInit {
     this.service.quizzes(this.quizzes).subscribe(() => {
       this.router.navigate(['/quizzes/new']);
     });
-  }
-
-  checkPermission(requiredRermissions?: Permission[]): boolean {   
-    if(!this.tokenData.value) {
-      return false; 
-    }
-
-    if(!requiredRermissions) {
-      return true;
-    }
-
-    for(const permission of requiredRermissions){
-      const hasPermission = this.tokenData.value.permissions.includes(permission);
-      if (!hasPermission) {
-        return false;
-      }
-    }  
-    
-    return true;
   }
 }

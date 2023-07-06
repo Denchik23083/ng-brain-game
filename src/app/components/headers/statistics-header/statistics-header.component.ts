@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { AuthService, Permission, TokenData } from 'src/app/services/auth.service';
+import { Component, OnInit } from '@angular/core';
+import { Permission } from 'src/app/services/auth.service';
+import { CheckPermission } from 'src/app/utils/check-permission';
 
 @Component({
   selector: 'app-statistics-header',
@@ -10,38 +9,16 @@ import { AuthService, Permission, TokenData } from 'src/app/services/auth.servic
 })
 export class StatisticsHeaderComponent implements OnInit {
 
-  @Input()
-  permissions?: Permission[];
+  hasAdminPermission = false;
+  hasGodPermission = false;
 
-  hasPermission = false;
+  adminPermission?: Permission[] = [Permission.getQuiz, Permission.editQuiz, Permission.removeUser];
+  godPermission?: Permission[] = [Permission.getQuiz, Permission.editQuiz, Permission.removeUser, Permission.adminToUser, Permission.userToAdmin];
 
-  tokenData: BehaviorSubject<TokenData>;
-
-  constructor(private authService: AuthService, private router: Router) {
-    this.tokenData = authService.tokenData$;
-  }
+  constructor(private checkPermission: CheckPermission) { }
 
   ngOnInit(): void {
-    this.hasPermission = this.checkPermission(this.permissions);
+    this.hasAdminPermission = this.checkPermission.checkPermission(this.adminPermission);
+    this.hasGodPermission = this.checkPermission.checkPermission(this.godPermission);
   }
-
-  checkPermission(requiredRermissions?: Permission[]): boolean {   
-    if(!this.tokenData.value) {
-      return false; 
-    }
-
-    if(!requiredRermissions) {
-      return true; 
-    }
-
-    for(const permission of requiredRermissions){
-      const hasPermission = this.tokenData.value.permissions.includes(permission);
-      if (!hasPermission) {
-        return false;
-      }
-    }  
-    
-    return true;
-  }
-
 }
