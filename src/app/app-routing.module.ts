@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GameComponent } from './components/brain/game/game.component';
-import { QuizzesComponent } from './components/brain/quizzes/quizzes.component';
 import { StatisticsComponent } from './components/user/statistics/statistics.component';
 import { EditComponent } from './components/user/edit/edit.component';
 import { PointsComponent } from './components/brain/points/points.component';
@@ -13,6 +12,7 @@ import { MainPageComponent } from './pages/main/main-page/main-page.component';
 import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
 import { PermissionGuard } from './utils/permission.guard';
 import { Permission } from './services/auth.service';
+import { QuizzesPageComponent } from './pages/brain/quizzes-page/quizzes-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent, pathMatch: 'full'},
@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfilePageComponent},
   { 
     path: 'quizzes', 
-    component: QuizzesComponent,
+    component: QuizzesPageComponent,
     canActivate: [PermissionGuard],
     data: { 
       permissions: [Permission.getQuiz] 

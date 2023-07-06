@@ -30,6 +30,7 @@ import { RegisterPageComponent } from './pages/auth/register-page/register-page.
 import { MainPageComponent } from './pages/main/main-page/main-page.component';
 import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
 import { StatisticsHeaderComponent } from './components/headers/statistics-header/statistics-header.component';
+import { QuizzesPageComponent } from './pages/brain/quizzes-page/quizzes-page.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { StatisticsHeaderComponent } from './components/headers/statistics-heade
     MainPageComponent,
     ProfilePageComponent,
     StatisticsHeaderComponent,
+    QuizzesPageComponent,
   ],
   imports: [
     BrowserModule,
