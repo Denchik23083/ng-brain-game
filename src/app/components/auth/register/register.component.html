@@ -4,9 +4,11 @@
     <form #form="ngForm" (ngSubmit)="submit(form)">
         <input [(ngModel)] = 'register.name' name='name' type="text" placeholder="name"/><br /><br />
         <input [(ngModel)] = 'register.email' name='email' type="email" placeholder="email"/><br /><br />
+        <select ngModel name="genderId">
+            <option *ngFor="let gender of genders" [ngValue]="gender.id">{{ gender.type }}</option>
+        </select><br /><br />
         <input [(ngModel)] = 'register.password' type='password' name='password' placeholder="password"/><br /><br />
         <input [(ngModel)] = 'register.confirmPassword' type='password' name='confirmPassword' placeholder="confirmPassword"/><br /><br />
-
         <button type='submit'>Register</button>
     </form>
     <div type="submit" class="button">Already have an account? <a routerLink="/login">Sign in account</a></div>

@@ -18,10 +18,19 @@ export interface TokenData {
   rawToken: string,
 }
 
+export interface GenderModel {
+  id: number,
+  type: Gender
+}
+
+export enum Gender {
+  male = 0,
+  female = 1
+}
 export interface RegisterModel{
   name: string,
   email: string,
-  gender: GenderModel,
+  genderId: number,
   password: string,
   confirmPassword: string,
 }
@@ -29,15 +38,6 @@ export interface RegisterModel{
 export interface LoginModel{
   email: string,
   password: string,
-}
-
-export interface GenderModel {
-  type: Gender
-}
-
-export enum Gender {
-  male = 'male',
-  female = 'female'
 }
 
 export enum Permission {
@@ -59,6 +59,8 @@ export class AuthService {
   tokenData$ = new BehaviorSubject<TokenData>(null as any);
   refreshToken$ = new BehaviorSubject<string>(null as any);
 
+  gender$ = new BehaviorSubject<GenderModel[]>([]);
+
   constructor(private http: HttpClient, private router: Router) {
     const rawToken = localStorage.getItem(this.tokenKey);
     if (rawToken) {
@@ -71,6 +73,13 @@ export class AuthService {
         this.refreshToken$.next(refreshToken);
       }      
     }
+
+  getGenders(): Observable<GenderModel[]> {
+    return this.http.get<GenderModel[]>(`${this.apiLink}/register/gender`)
+      .pipe(
+        tap(gender => this.gender$.next(gender))
+      )
+  }
 
   register(model: RegisterModel){
     return this.http.post<RegisterModel>(`${this.apiLink}/register`, model)
