@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
@@ -36,7 +36,7 @@ export class UserService {
 
   statistics$ = new BehaviorSubject<StatisticsModel[]>([]);
   weather$ = new BehaviorSubject<WeatherModel[]>([]);
-
+  
   constructor(private http: HttpClient, 
     private router: Router,
     private authService: AuthService) { }
@@ -73,6 +73,12 @@ export class UserService {
     this.router.navigate(['/']);
   }
 
+  clearData(): void {
+    localStorage.clear();
+    this.authService.tokenData$.next(null as any);
+    this.authService.refreshToken$.next(null as any);
+  }
+
   /*remove(): Observable<{}>{
     return this.http.delete(`${this.apiLink}/user`)
       .pipe(
@@ -90,11 +96,5 @@ export class UserService {
 
   clearStatistics(): Observable<{}>{
     return this.http.delete(`${this.apiLink}/statistics`);
-  }
-
-  clearData(): void {
-    localStorage.clear();
-    this.authService.tokenData$.next(null as any);
-    this.authService.refreshToken$.next(null as any);
   } 
 }
