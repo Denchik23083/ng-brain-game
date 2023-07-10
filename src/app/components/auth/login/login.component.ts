@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   submit(form: NgForm): void {
     const loginUser = form.value as LoginModel;
-
+    
     this.service.login(loginUser).subscribe();
   }
 }

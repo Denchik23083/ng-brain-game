@@ -32,6 +32,9 @@ import { ProfilePageComponent } from './pages/user/profile-page/profile-page.com
 import { StatisticsHeaderComponent } from './components/headers/statistics-header/statistics-header.component';
 import { QuizzesPageComponent } from './pages/brain/quizzes-page/quizzes-page.component';
 import { CheckPermission } from './utils/check-permission';
+import { AdminGodHeaderComponent } from './components/headers/admin-god-header/admin-god-header.component';
+import { RemoveUserComponent } from './components/user/remove-user/remove-user.component';
+import { RemoveUserPageComponent } from './pages/user/remove-user-page/remove-user-page.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,9 @@ import { CheckPermission } from './utils/check-permission';
     ProfilePageComponent,
     StatisticsHeaderComponent,
     QuizzesPageComponent,
+    AdminGodHeaderComponent,
+    RemoveUserPageComponent,
+    RemoveUserComponent,    
   ],
   imports: [
     BrowserModule,

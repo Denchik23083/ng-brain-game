@@ -22,21 +22,12 @@ export class RegisterComponent implements OnInit {
   constructor(private readonly service: AuthService) { }
 
   ngOnInit(): void {
-    this.service.getGenders()
-      .subscribe(gender => {
-        this.genders = gender;
-        console.log(this.genders);
-        for(const gender of this.genders)
-        {
-          console.log(gender.type);
-        }
-        
-      });
+    this.service.getGenders().subscribe(gender => this.genders = gender);
   }
 
   submit(form: NgForm): void {
     const registerUser = form.value as RegisterModel;
-    debugger;
+    
     this.service.register(registerUser).subscribe();
   }
 }
