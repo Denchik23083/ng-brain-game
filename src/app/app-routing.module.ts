@@ -13,6 +13,7 @@ import { ProfilePageComponent } from './pages/user/profile-page/profile-page.com
 import { PermissionGuard } from './utils/permission.guard';
 import { Permission } from './services/auth.service';
 import { QuizzesPageComponent } from './pages/brain/quizzes-page/quizzes-page.component';
+import { RemoveUserPageComponent } from './pages/user/remove-user-page/remove-user-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent, pathMatch: 'full'},
@@ -23,9 +24,13 @@ const routes: Routes = [
     path: 'quizzes', 
     component: QuizzesPageComponent,
     canActivate: [PermissionGuard],
-    data: { 
-      permissions: [Permission.getQuiz] 
-    }
+    data: { permissions: [Permission.getQuiz] }
+  },
+  { 
+    path: 'removeuser', 
+    component: RemoveUserPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.removeUser] }
   },
   { path: 'quizzes/statistics', component: StatisticsComponent},  
   { path: 'quizzes/new', component: NewComponent},
