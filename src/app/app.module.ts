@@ -73,8 +73,7 @@ import { RemoveUserPageComponent } from './pages/user/remove-user-page/remove-us
   providers: [
     AuthService,
     BrainGameService,
-    UserService,   
-    CheckPermission, 
+    UserService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: RefreshInterceptor, multi: true },
   ],

@@ -1,16 +1,10 @@
 import { BehaviorSubject } from "rxjs";
 import { AuthService, Permission, TokenData } from "../services/auth.service";
-import { Router } from "@angular/router";
-import { Injectable } from "@angular/core";
-
-@Injectable({
-    providedIn: 'root'
-})
 
 export class CheckPermission {
     tokenData: BehaviorSubject<TokenData>;
     
-    constructor(private authService: AuthService, private router: Router) { 
+    constructor(private authService: AuthService) { 
         this.tokenData = authService.tokenData$;
       }
 
@@ -31,5 +25,5 @@ export class CheckPermission {
         }  
         
         return true;
-      }
+    }
 }

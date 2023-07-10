@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Permission } from 'src/app/services/auth.service';
+import { AuthService, Permission } from 'src/app/services/auth.service';
 import { CheckPermission } from 'src/app/utils/check-permission';
 
 @Component({
@@ -7,7 +7,7 @@ import { CheckPermission } from 'src/app/utils/check-permission';
   templateUrl: './admin-god-header.component.html',
   styleUrls: ['./admin-god-header.component.scss']
 })
-export class AdminGodHeaderComponent implements OnInit {
+export class AdminGodHeaderComponent extends CheckPermission implements OnInit {
 
   hasAdminPermission = false;
   hasGodPermission = false;
@@ -15,11 +15,12 @@ export class AdminGodHeaderComponent implements OnInit {
   adminPermission?: Permission[] = [Permission.getQuiz, Permission.editQuiz, Permission.removeUser];
   godPermission?: Permission[] = [Permission.getQuiz, Permission.editQuiz, Permission.removeUser, Permission.adminToUser, Permission.userToAdmin];
 
-  constructor(private checkPermission: CheckPermission) { }
-
-  ngOnInit(): void {
-    this.hasAdminPermission = this.checkPermission.checkPermission(this.adminPermission);
-    this.hasGodPermission = this.checkPermission.checkPermission(this.godPermission);
+  constructor(authService: AuthService) {
+    super(authService);
   }
 
+  ngOnInit(): void {
+    this.hasAdminPermission = super.checkPermission(this.adminPermission);
+    this.hasGodPermission = super.checkPermission(this.godPermission);
+  }
 }
