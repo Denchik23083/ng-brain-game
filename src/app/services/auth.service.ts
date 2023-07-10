@@ -20,13 +20,9 @@ export interface TokenData {
 
 export interface GenderModel {
   id: number,
-  type: Gender
+  type: string 
 }
 
-export enum Gender {
-  male = 0,
-  female = 1
-}
 export interface RegisterModel{
   name: string,
   email: string,
@@ -64,15 +60,15 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {
     const rawToken = localStorage.getItem(this.tokenKey);
     if (rawToken) {
-        const tokenData = this.getTokenData(rawToken);
-        this.tokenData$.next(tokenData);
-      }
+      const tokenData = this.getTokenData(rawToken);
+      this.tokenData$.next(tokenData);
+    }
 
     const refreshToken = localStorage.getItem(this.refreshTokenKey);
-      if (refreshToken) {
-        this.refreshToken$.next(refreshToken);
-      }      
-    }
+    if (refreshToken) {
+      this.refreshToken$.next(refreshToken);
+    }      
+  }
 
   getGenders(): Observable<GenderModel[]> {
     return this.http.get<GenderModel[]>(`${this.apiLink}/register/gender`)
