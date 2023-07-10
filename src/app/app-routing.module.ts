@@ -27,7 +27,7 @@ const routes: Routes = [
     data: { permissions: [Permission.getQuiz] }
   },
   { 
-    path: 'removeuser', 
+    path: 'profile/removeuser', 
     component: RemoveUserPageComponent,
     canActivate: [PermissionGuard],
     data: { permissions: [Permission.removeUser] }

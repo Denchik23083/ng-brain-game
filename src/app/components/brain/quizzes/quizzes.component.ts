@@ -2,9 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BrainGameService, QuizzesModel } from 'src/app/services/brain-game-service';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
-import { AuthService, Permission, TokenData } from 'src/app/services/auth.service';
-import { MainComponent } from '../../main/main.component';
-import { WeatherModel } from 'src/app/services/user.service';
+import { AuthService, Permission } from 'src/app/services/auth.service';
 import { CheckPermission } from 'src/app/utils/check-permission';
 
 @Component({
@@ -12,7 +10,7 @@ import { CheckPermission } from 'src/app/utils/check-permission';
   templateUrl: './quizzes.component.html',
   styleUrls: ['./quizzes.component.scss']
 })
-export class QuizzesComponent implements OnInit {
+export class QuizzesComponent extends CheckPermission implements OnInit {
 
   @Input()
   permissions?: Permission[];
@@ -26,12 +24,13 @@ export class QuizzesComponent implements OnInit {
 
   quizzes$!: BehaviorSubject<QuizzesModel[]>;
 
-  constructor(private service: BrainGameService, private router: Router, private checkPermission: CheckPermission) { 
+  constructor(authService: AuthService, private service: BrainGameService, private router: Router) { 
+    super(authService);
     this.quizzes$ = service.quizzes$;
   }
 
   ngOnInit(): void {
-    this.hasPermission = this.checkPermission.checkPermission(this.permissions);
+    this.hasPermission = super.checkPermission(this.permissions);
   }
 
   animal(): void {
