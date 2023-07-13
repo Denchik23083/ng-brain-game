@@ -5,15 +5,17 @@ import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
-export interface WeatherModel{
-  date: Date,
-  temperatureC: number,
-  summary: string
-}
-
-export interface UserModel{
+export interface UserWriteModel{
   name: string,
   email: string,
+}
+
+export interface UserReadModel{
+  id: number,
+  name: string,
+  email: string,
+  genderId: number,
+  roleId: number,
 }
 
 export interface PasswordModel{
@@ -32,24 +34,24 @@ export interface StatisticsModel{
   providedIn: 'root'
 })
 export class UserService {
-  apiLink = 'https://localhost:6001/api';
+  apiLink = 'https://localhost:7001/api';
 
   statistics$ = new BehaviorSubject<StatisticsModel[]>([]);
-  weather$ = new BehaviorSubject<WeatherModel[]>([]);
-  
+  users$ = new BehaviorSubject<UserReadModel[]>([]);
+    
   constructor(private http: HttpClient, 
     private router: Router,
     private authService: AuthService) { }
 
-  weather(): Observable<WeatherModel[]>{
-    return this.http.get<WeatherModel[]>(`${this.apiLink}/weather`)
+  getUsers(): Observable<UserReadModel[]>{
+    return this.http.get<UserReadModel[]>(`${this.apiLink}/user`)
       .pipe(
-        tap(weather => this.weather$.next(weather))
-      )
+        tap(users => this.users$.next(users))
+      );
   }
 
-  edit(model: UserModel): Observable<UserModel>{
-    return this.http.put<UserModel>(`${this.apiLink}/user`, model)
+  edit(model: UserWriteModel): Observable<UserWriteModel>{
+    return this.http.put<UserWriteModel>(`${this.apiLink}/user`, model)
       .pipe(
         tap(() => { 
           this.clearData();
@@ -78,14 +80,6 @@ export class UserService {
     this.authService.tokenData$.next(null as any);
     this.authService.refreshToken$.next(null as any);
   }
-
-  /*remove(): Observable<{}>{
-    return this.http.delete(`${this.apiLink}/user`)
-      .pipe(
-        tap(() => localStorage.removeItem(this.authService.tokenKey)),
-        tap(() => this.router.navigate(['/']))
-      );
-  }*/
 
   getPoints(): Observable<StatisticsModel[]>{
     return this.http.get<StatisticsModel[]>(`${this.apiLink}/statistics`)

@@ -1,1 +1,22 @@
-<p>remove-user works!</p>
+<div class="body">
+    <span routerLink="/profile" class="close"></span>
+    <br />
+    <table class="table table-striped">
+        <thead>
+            <tr scope="col">
+                <td><strong>Name</strong></td>
+                <td><strong>Email</strong></td>
+                <td><strong>Remove</strong></td>
+            </tr>
+        </thead>
+        <tbody *ngFor="let user of (users$ | async)" >            
+            <tr scope="row">
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <button (click)="removeUser(user.id)" class="btn btn-danger">Remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

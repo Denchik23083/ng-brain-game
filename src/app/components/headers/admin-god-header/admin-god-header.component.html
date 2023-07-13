@@ -1,6 +1,6 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-success text-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto dont-weight-normal">BrainGame</h5>
     <nav *ngIf="hasAdminPermission"><a class="p-2 text-white text-decoration-none" routerLink="/profile/removeuser">RemoveUser</a></nav>
-    <nav *ngIf="hasGodPermission"><a class="p-2 text-white text-decoration-none" routerLink="/">UserToAdmin</a></nav>
-    <nav *ngIf="hasGodPermission"><a class="p-2 text-white text-decoration-none" routerLink="/">AdminToUser</a></nav>
+    <nav *ngIf="hasGodPermission"><a class="p-2 text-white text-decoration-none" routerLink="/profile/usertoadmin">UserToAdmin</a></nav>
+    <nav *ngIf="hasGodPermission"><a class="p-2 text-white text-decoration-none" routerLink="/admintouser">AdminToUser</a></nav>
 </div>
