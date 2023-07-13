@@ -1,0 +1,22 @@
+<div class="body">
+    <span routerLink="/profile" class="close"></span>
+    <br />
+    <table class="table table-striped">
+        <thead>
+            <tr scope="col">
+                <td><strong>Name</strong></td>
+                <td><strong>Email</strong></td>
+                <td><strong>ToAdmin</strong></td>
+            </tr>
+        </thead>
+        <tbody *ngFor="let user of (users$ | async)" >            
+            <tr scope="row">
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <button (click)="userToAdmin(user.id)" class="btn btn-success">ToAdmin</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

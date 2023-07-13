@@ -14,8 +14,6 @@ export interface UserReadModel{
   id: number,
   name: string,
   email: string,
-  genderId: number,
-  roleId: number,
 }
 
 export interface PasswordModel{
@@ -34,7 +32,8 @@ export interface StatisticsModel{
   providedIn: 'root'
 })
 export class UserService {
-  apiLink = 'https://localhost:7001/api';
+  apiLink = 'https://localhost:7001/api/user';
+  statisticsLink = 'https://localhost:6001/api/statistics';
 
   statistics$ = new BehaviorSubject<StatisticsModel[]>([]);
   users$ = new BehaviorSubject<UserReadModel[]>([]);
@@ -44,14 +43,14 @@ export class UserService {
     private authService: AuthService) { }
 
   getUsers(): Observable<UserReadModel[]>{
-    return this.http.get<UserReadModel[]>(`${this.apiLink}/user`)
+    return this.http.get<UserReadModel[]>(this.apiLink)
       .pipe(
         tap(users => this.users$.next(users))
       );
   }
 
   edit(model: UserWriteModel): Observable<UserWriteModel>{
-    return this.http.put<UserWriteModel>(`${this.apiLink}/user`, model)
+    return this.http.put<UserWriteModel>(this.apiLink, model)
       .pipe(
         tap(() => { 
           this.clearData();
@@ -61,7 +60,7 @@ export class UserService {
   }
 
   password(model: PasswordModel): Observable<PasswordModel>{
-    return this.http.post<PasswordModel>(`${this.apiLink}/user/password`, model)
+    return this.http.post<PasswordModel>(`${this.apiLink}/password`, model)
       .pipe(
         tap(() => { 
           this.clearData();
@@ -82,13 +81,13 @@ export class UserService {
   }
 
   getPoints(): Observable<StatisticsModel[]>{
-    return this.http.get<StatisticsModel[]>(`${this.apiLink}/statistics`)
+    return this.http.get<StatisticsModel[]>(this.statisticsLink)
       .pipe(
         tap(point => this.statistics$.next(point))
       );
   }
 
   clearStatistics(): Observable<{}>{
-    return this.http.delete(`${this.apiLink}/statistics`);
+    return this.http.delete(this.statisticsLink);
   } 
 }

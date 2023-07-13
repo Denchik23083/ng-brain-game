@@ -12,16 +12,16 @@ export class RemoveUserComponent implements OnInit {
 
   users$: BehaviorSubject<UserReadModel[]>;
 
-  constructor(private service: UserService, private adminService: AdminService) {
-    this.users$ = service.users$;
+  constructor(private service: AdminService, private userService: UserService) {
+    this.users$ = userService.users$;
   }
 
   ngOnInit(): void {
-    this.service.getUsers().subscribe();
+    this.userService.getUsers().subscribe();
   }
 
   removeUser(id: number): void{
-    this.adminService.removeUser(id).subscribe();
+    this.service.removeUser(id).subscribe();
   }
 
 }
