@@ -1,19 +1,12 @@
 <div class="body">
     <span routerLink="/profile" class="close"></span>
     <br />
-    <!--<div>
-        <form #form="ngForm" (ngSubmit)="filter(form)">
-            <input [(ngModel)] = 'user.email' name='email' type="email" placeholder="email"/>
-            <button type='submit' class="ml-2 btn btn-success">Filter</button>
-        </form>
-    </div>
-    <br />-->
     <table class="table table-striped">
         <thead>
             <tr scope="col">
                 <td><strong>Name</strong></td>
                 <td><strong>Email</strong></td>
-                <td><strong>Remove</strong></td>
+                <td><strong>ToAdmin</strong></td>
             </tr>
         </thead>
         <tbody *ngFor="let user of (users$ | async)" >            
@@ -21,7 +14,7 @@
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
                 <td>
-                    <button (click)="removeUser(user.id)" class="btn btn-danger">Remove</button>
+                    <button (click)="userToAdmin(user.id)" class="btn btn-success">ToAdmin</button>
                 </td>
             </tr>
         </tbody>

@@ -1,4 +1,9 @@
+import { NgForOf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
+import { AdminService } from 'src/app/services/admin.service';
+import { UserReadModel, UserService, UserWriteModel } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-remove-user',
@@ -7,9 +12,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RemoveUserComponent implements OnInit {
 
-  constructor() { }
+  user: UserWriteModel = {
+    name: '',
+    email: '',
+  };
+
+  users$: BehaviorSubject<UserReadModel[]>;
+
+  constructor(private service: AdminService, private userService: UserService) {
+    this.users$ = userService.users$;
+  }
 
   ngOnInit(): void {
+    this.userService.getUsers().subscribe();
   }
+
+  removeUser(id: number): void{
+    this.service.removeUser(id).subscribe();
+  }
+
+  /*filter(ngForm: NgForm): void{
+    //this.userService.getUsers().subscribe();
+
+    var email = ngForm.value.email;
+
+    const updatedArr = this.users$.value.filter(b => b.email.startsWith(`${email}`));
+
+    console.log(updatedArr);
+
+    this.users$.next(updatedArr);
+  }*/
 
 }

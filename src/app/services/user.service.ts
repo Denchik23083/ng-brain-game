@@ -5,13 +5,13 @@ import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
-export interface WeatherModel{
-  date: Date,
-  temperatureC: number,
-  summary: string
+export interface UserWriteModel{
+  name: string,
+  email: string,
 }
 
-export interface UserModel{
+export interface UserReadModel{
+  id: number,
   name: string,
   email: string,
 }
@@ -32,24 +32,25 @@ export interface StatisticsModel{
   providedIn: 'root'
 })
 export class UserService {
-  apiLink = 'https://localhost:6001/api';
+  apiLink = 'https://localhost:7001/api/user';
+  statisticsLink = 'https://localhost:6001/api/statistics';
 
   statistics$ = new BehaviorSubject<StatisticsModel[]>([]);
-  weather$ = new BehaviorSubject<WeatherModel[]>([]);
-  
+  users$ = new BehaviorSubject<UserReadModel[]>([]);
+    
   constructor(private http: HttpClient, 
     private router: Router,
     private authService: AuthService) { }
 
-  weather(): Observable<WeatherModel[]>{
-    return this.http.get<WeatherModel[]>(`${this.apiLink}/weather`)
+  getUsers(): Observable<UserReadModel[]>{
+    return this.http.get<UserReadModel[]>(this.apiLink)
       .pipe(
-        tap(weather => this.weather$.next(weather))
-      )
+        tap(users => this.users$.next(users))
+      );
   }
 
-  edit(model: UserModel): Observable<UserModel>{
-    return this.http.put<UserModel>(`${this.apiLink}/user`, model)
+  edit(model: UserWriteModel): Observable<UserWriteModel>{
+    return this.http.put<UserWriteModel>(this.apiLink, model)
       .pipe(
         tap(() => { 
           this.clearData();
@@ -59,7 +60,7 @@ export class UserService {
   }
 
   password(model: PasswordModel): Observable<PasswordModel>{
-    return this.http.post<PasswordModel>(`${this.apiLink}/user/password`, model)
+    return this.http.post<PasswordModel>(`${this.apiLink}/password`, model)
       .pipe(
         tap(() => { 
           this.clearData();
@@ -79,22 +80,14 @@ export class UserService {
     this.authService.refreshToken$.next(null as any);
   }
 
-  /*remove(): Observable<{}>{
-    return this.http.delete(`${this.apiLink}/user`)
-      .pipe(
-        tap(() => localStorage.removeItem(this.authService.tokenKey)),
-        tap(() => this.router.navigate(['/']))
-      );
-  }*/
-
   getPoints(): Observable<StatisticsModel[]>{
-    return this.http.get<StatisticsModel[]>(`${this.apiLink}/statistics`)
+    return this.http.get<StatisticsModel[]>(this.statisticsLink)
       .pipe(
         tap(point => this.statistics$.next(point))
       );
   }
 
   clearStatistics(): Observable<{}>{
-    return this.http.delete(`${this.apiLink}/statistics`);
+    return this.http.delete(this.statisticsLink);
   } 
 }

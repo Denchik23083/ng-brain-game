@@ -14,30 +14,44 @@ import { PermissionGuard } from './utils/permission.guard';
 import { Permission } from './services/auth.service';
 import { QuizzesPageComponent } from './pages/brain/quizzes-page/quizzes-page.component';
 import { RemoveUserPageComponent } from './pages/user/remove-user-page/remove-user-page.component';
+import { UserToAdminPageComponent } from './pages/user/user-to-admin-page/user-to-admin-page.component';
+import { AdminToUserPageComponent } from './pages/user/admin-to-user-page/admin-to-user-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent, pathMatch: 'full'},
   { path: 'login', component: LoginPageComponent},
   { path: 'register', component: RegisterPageComponent},
   { path: 'profile', component: ProfilePageComponent},
-  { 
-    path: 'quizzes', 
-    component: QuizzesPageComponent,
-    canActivate: [PermissionGuard],
-    data: { permissions: [Permission.getQuiz] }
-  },
+  { path: 'profile/edit', component: EditComponent},
+  { path: 'profile/edit/password', component: PasswordComponent},
   { 
     path: 'profile/removeuser', 
     component: RemoveUserPageComponent,
     canActivate: [PermissionGuard],
     data: { permissions: [Permission.removeUser] }
   },
+  { 
+    path: 'profile/usertoadmin', 
+    component: UserToAdminPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.userToAdmin] }
+  },
+  { 
+    path: 'profile/admintouser', 
+    component: AdminToUserPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.adminToUser] }
+  },  
+  { 
+    path: 'quizzes', 
+    component: QuizzesPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.getQuiz] }
+  },
   { path: 'quizzes/statistics', component: StatisticsComponent},  
   { path: 'quizzes/new', component: NewComponent},
   { path: 'quizzes/new/game', component: GameComponent},
   { path: 'quizzes/new/game/points', component: PointsComponent},
-  { path: 'profile/edit', component: EditComponent},
-  { path: 'profile/edit/password', component: PasswordComponent},
 ];
 
 @NgModule({

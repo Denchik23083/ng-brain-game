@@ -31,10 +31,13 @@ import { MainPageComponent } from './pages/main/main-page/main-page.component';
 import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
 import { StatisticsHeaderComponent } from './components/headers/statistics-header/statistics-header.component';
 import { QuizzesPageComponent } from './pages/brain/quizzes-page/quizzes-page.component';
-import { CheckPermission } from './utils/check-permission';
 import { AdminGodHeaderComponent } from './components/headers/admin-god-header/admin-god-header.component';
 import { RemoveUserComponent } from './components/user/remove-user/remove-user.component';
 import { RemoveUserPageComponent } from './pages/user/remove-user-page/remove-user-page.component';
+import { UserToAdminPageComponent } from './pages/user/user-to-admin-page/user-to-admin-page.component';
+import { AdminToUserPageComponent } from './pages/user/admin-to-user-page/admin-to-user-page.component';
+import { UserToAdminComponent } from './components/user/user-to-admin/user-to-admin.component';
+import { AdminToUserComponent } from './components/user/admin-to-user/admin-to-user.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,11 @@ import { RemoveUserPageComponent } from './pages/user/remove-user-page/remove-us
     QuizzesPageComponent,
     AdminGodHeaderComponent,
     RemoveUserPageComponent,
-    RemoveUserComponent,    
+    RemoveUserComponent,
+    UserToAdminPageComponent,
+    AdminToUserPageComponent,
+    UserToAdminComponent,
+    AdminToUserComponent,    
   ],
   imports: [
     BrowserModule,

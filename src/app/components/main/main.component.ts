@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { AuthService, Permission, TokenData } from 'src/app/services/auth.service';
-import { UserService, WeatherModel } from 'src/app/services/user.service';
+import { AuthService, TokenData } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-main',
@@ -10,21 +9,15 @@ import { UserService, WeatherModel } from 'src/app/services/user.service';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-   
-  weather: WeatherModel[] = [];  
+  
   tokenData: BehaviorSubject<TokenData>;
 
-  constructor(private userService: UserService, private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router) {
     this.tokenData = authService.tokenData$;
   }
 
   ngOnInit(): void {
     
-  }
-
-  loadData(): void{
-    this.userService.weather()
-    .subscribe(weather => this.weather = weather)
   }
 
   quiz(): void{

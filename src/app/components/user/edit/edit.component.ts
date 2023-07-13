@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserModel, UserService } from 'src/app/services/user.service';
+import { UserWriteModel, UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class EditComponent implements OnInit {
 
-  user: UserModel = {
+  user: UserWriteModel = {
     name: '',
     email: '',
   };
@@ -21,7 +21,7 @@ export class EditComponent implements OnInit {
   }
 
   submit(form: NgForm): void {
-    const editUser = form.value as UserModel;
+    const editUser = form.value as UserWriteModel;
     
     this.service.edit(editUser).subscribe();
   }
