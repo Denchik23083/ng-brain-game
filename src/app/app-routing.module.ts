@@ -4,7 +4,6 @@ import { GameComponent } from './components/brain/game/game.component';
 import { StatisticsComponent } from './components/user/statistics/statistics.component';
 import { EditComponent } from './components/user/edit/edit.component';
 import { PointsComponent } from './components/brain/points/points.component';
-import { NewComponent } from './components/brain/new/new.component';
 import { PasswordComponent } from './components/user/password/password.component';
 import { LoginPageComponent } from './pages/auth/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/auth/register-page/register-page.component';
@@ -48,10 +47,9 @@ const routes: Routes = [
     canActivate: [PermissionGuard],
     data: { permissions: [Permission.getQuiz] }
   },
-  { path: 'quizzes/statistics', component: StatisticsComponent},  
-  { path: 'quizzes/new', component: NewComponent},
-  { path: 'quizzes/new/game', component: GameComponent},
-  { path: 'quizzes/new/game/points', component: PointsComponent},
+  { path: 'quizzes/:id', component: GameComponent },
+  { path: 'quizzes/statistics', component: StatisticsComponent},
+  { path: 'quizzes/:id/points', component: PointsComponent},
 ];
 
 @NgModule({

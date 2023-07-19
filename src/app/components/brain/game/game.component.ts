@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { BrainGameService, QuestionModel, CorrectsModel } from 'src/app/services/brain-game-service';
-import { Router } from '@angular/router';
-import { NewComponent } from '../new/new.component';
-
-let id = 1;
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -14,39 +11,47 @@ let id = 1;
 
 export class GameComponent implements OnInit {
 
-  quest$: BehaviorSubject<QuestionModel | null>;
+  questions$!: BehaviorSubject<QuestionModel[]>;
+  quest: QuestionModel | undefined;
 
   correct: CorrectsModel = {
-    id: 0,
+    questionId: 0,
     correctAnswer: ''
   };
 
-  constructor(private service: BrainGameService, private router: Router, public count: NewComponent) {
-    this.quest$ = service.quest$; 
+  constructor(private service: BrainGameService, private activatedRoute: ActivatedRoute, private router: Router) {
+    this.questions$ = service.questions$;
   }
 
-  number: any;
+  number: any = 1;
   answers: any;
   iter = [1, 2, 3];
 
   ngOnInit(): void {
-    if(id > 2)
-    {
-      this.router.navigate(['/main/quizzes/new/game/points']);
-      id = 1;
-    }
-    this.number = id;
-    this.service.getQuestionById(id).subscribe(() => {      
-      this.answers = this.service.quest$.value?.answers.split(',') as any;
+    this.getQuestions();
+  }
+
+  getQuestions(): void{
+    const id = this.activatedRoute.snapshot.paramMap.get('id') as any
+    this.service.getQuestions(id).subscribe(model => {
+      if(this.number > model.length)
+      {      
+        this.number = 1;
+        this.router.navigate([`/`]);
+      }
+
+      this.quest = model.find(b => b.number == this.number);
+      console.log(this.number);
+      this.answers = this.quest?.answers.split(',') as any;
     });
   }
 
   foo(answer: string): void {
-    this.correct.correctAnswer = answer;
+    this.correct = { questionId: this.quest?.id, correctAnswer: answer}
     
     this.service.corrects(this.correct).subscribe(() => {
-      id++;
-      this.ngOnInit();
+      this.number++;
+      this.getQuestions();
     });
   }
 }

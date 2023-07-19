@@ -18,8 +18,8 @@ export class QuizzesComponent extends CheckPermission implements OnInit {
   hasPermission = false;
   
   quizzes: QuizzesModel = {
+    id: 0,
     name: '',
-    point: 0
   };
 
   quizzes$!: BehaviorSubject<QuizzesModel[]>;
@@ -31,26 +31,10 @@ export class QuizzesComponent extends CheckPermission implements OnInit {
 
   ngOnInit(): void {
     this.hasPermission = super.checkPermission(this.permissions);
+    this.service.getQuizzes().subscribe();
   }
 
-  animal(): void {
-    this.quizzes.name = 'Animals';
-    this.submit();
-  }
-
-  plants(): void {
-    this.quizzes.name = 'Plants';
-    this.submit();
-  }
-
-  mushrooms(): void {
-    this.quizzes.name = 'Mushrooms';
-    this.submit();
-  }
-
-  submit() : void {
-    this.service.quizzes(this.quizzes).subscribe(() => {
-      this.router.navigate(['/quizzes/new']);
-    });
+  game(id: number): void {
+    this.router.navigate([`/quizzes/${id}`])
   }
 }
