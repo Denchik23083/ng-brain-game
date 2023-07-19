@@ -8,8 +8,6 @@ import { Permission } from 'src/app/services/auth.service';
 })
 export class QuizzesPageComponent implements OnInit {
 
-  public permission = Permission;
-
   constructor() { }
 
   ngOnInit(): void {

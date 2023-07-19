@@ -41,7 +41,6 @@ export class GameComponent implements OnInit {
       }
 
       this.quest = model.find(b => b.number == this.number);
-      console.log(this.number);
       this.answers = this.quest?.answers.split(',') as any;
     });
   }

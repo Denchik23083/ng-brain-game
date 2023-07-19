@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
-import { MainComponent } from './components/main/main.component';
+import { MainComponent } from './components/main/main/main.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { QuizzesComponent } from './components/brain/quizzes/quizzes.component';
 import { FormsModule } from '@angular/forms';
@@ -11,10 +11,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/auth/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './components/user/profile/profile.component';
-import { StatisticsComponent } from './components/user/statistics/statistics.component';
+import { StatisticsComponent } from './components/main/statistics/statistics.component';
 import { HeaderComponent } from './components/headers/header/header.component';
 import { AuthHeaderComponent } from './components/headers/auth-header/auth-header.component';
-import { ProfileHeaderComponent } from './components/headers/profile-header/profile-header.component';
+import { ProfileStatisticsHeaderComponent } from './components/headers/profile-statistics-header/profile-statistics-header.component';
 import { GameComponent } from './components/brain/game/game.component';
 import { BrainGameService } from './services/brain-game-service';
 import { EditComponent } from './components/user/edit/edit.component';
@@ -28,7 +28,6 @@ import { LoginPageComponent } from './pages/auth/login-page/login-page.component
 import { RegisterPageComponent } from './pages/auth/register-page/register-page.component';
 import { MainPageComponent } from './pages/main/main-page/main-page.component';
 import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
-import { StatisticsHeaderComponent } from './components/headers/statistics-header/statistics-header.component';
 import { QuizzesPageComponent } from './pages/brain/quizzes-page/quizzes-page.component';
 import { AdminGodHeaderComponent } from './components/headers/admin-god-header/admin-god-header.component';
 import { RemoveUserComponent } from './components/user/remove-user/remove-user.component';
@@ -37,6 +36,11 @@ import { UserToAdminPageComponent } from './pages/user/user-to-admin-page/user-t
 import { AdminToUserPageComponent } from './pages/user/admin-to-user-page/admin-to-user-page.component';
 import { UserToAdminComponent } from './components/user/user-to-admin/user-to-admin.component';
 import { AdminToUserComponent } from './components/user/admin-to-user/admin-to-user.component';
+import { StatisticsPageComponent } from './pages/main/statistics-page/statistics-page.component';
+import { EditPageComponent } from './pages/user/edit-page/edit-page.component';
+import { PasswordPageComponent } from './pages/user/password-page/password-page.component';
+import { GamePageComponent } from './pages/brain/game-page/game-page.component';
+import { PointsPageComponent } from './pages/brain/points-page/points-page.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,7 @@ import { AdminToUserComponent } from './components/user/admin-to-user/admin-to-u
     StatisticsComponent,
     HeaderComponent,
     AuthHeaderComponent,
-    ProfileHeaderComponent,
+    ProfileStatisticsHeaderComponent,
     GameComponent,
     EditComponent,
     PointsComponent,
@@ -58,7 +62,6 @@ import { AdminToUserComponent } from './components/user/admin-to-user/admin-to-u
     RegisterPageComponent,
     MainPageComponent,
     ProfilePageComponent,
-    StatisticsHeaderComponent,
     QuizzesPageComponent,
     AdminGodHeaderComponent,
     RemoveUserPageComponent,
@@ -66,7 +69,12 @@ import { AdminToUserComponent } from './components/user/admin-to-user/admin-to-u
     UserToAdminPageComponent,
     AdminToUserPageComponent,
     UserToAdminComponent,
-    AdminToUserComponent,    
+    AdminToUserComponent,
+    StatisticsPageComponent,
+    EditPageComponent,
+    PasswordPageComponent,
+    GamePageComponent,
+    PointsPageComponent,    
   ],
   imports: [
     BrowserModule,

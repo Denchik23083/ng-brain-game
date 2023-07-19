@@ -1,15 +1,10 @@
 <div class="body">
     <span routerLink="/" class="close"></span>
     <br />
-</div>
-
-<div class="container" *ngIf="hasPermission else nopermission">
-    <div class="block" *ngFor="let quiz of (quizzes$ | async)">
-        <h2 class="h2">{{quiz.name}}</h2>
-        <button class="button btn-success" (click)="game(quiz.id)">New Game</button>        
+    <div class="container">
+        <div class="block" *ngFor="let quiz of (quizzes$ | async)">
+            <h2 class="h2">{{quiz.name}}</h2>
+            <button class="button btn-success" (click)="game(quiz.id)">New Game</button>        
+        </div>
     </div>
 </div>
-
-<ng-template #nopermission>
-    <h5>You don't have permission</h5>
-</ng-template>
