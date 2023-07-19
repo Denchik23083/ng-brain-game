@@ -34,7 +34,6 @@ export class BrainGameService {
 
   quizzes$ = new BehaviorSubject<QuizzesModel[]>([]);
   questions$ = new BehaviorSubject<QuestionModel[]>([]);
-  corrects$ = new BehaviorSubject<CorrectsModel[]>([]);  
   points$ = new BehaviorSubject<PointsModel | null>(null);
 
   constructor(private http: HttpClient) { }  
@@ -54,10 +53,7 @@ export class BrainGameService {
   }
 
   corrects(model: CorrectsModel): Observable<CorrectsModel>{
-    return this.http.post<CorrectsModel>(`${this.apiLink}/correct`, model)
-    .pipe(
-      tap(log => this.corrects$.next([...this.corrects$.value, log]))
-    )
+    return this.http.post<CorrectsModel>(`${this.apiLink}/correct`, model);
   }
 
   removePoints(): Observable<{}>{
