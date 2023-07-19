@@ -1,11 +1,11 @@
-<app-header></app-header>
-
-<div *ngIf="quest as quest">
-    <br>
-    <h2 class="h1">{{quest.number}}) {{quest.question}}</h2>
-</div>   
-
-<div *ngFor="let item of answers; let i = index;" class="answ">
-    <br>
-    <span class="a">{{iter[i]}})</span><input type="radio" (click)="foo(item)" class="ans"><span class="a">{{item}}</span>
+<div class="body">
+    <div *ngIf="quest as quest">
+        <br>
+        <h2 class="h1">{{quest.number}}) {{quest.question}}</h2>
+    </div>   
+    
+    <div *ngFor="let item of answers; let i = index;" class="answ">
+        <br>
+        <span class="a">{{iter[i]}})</span><input type="radio" (click)="foo(item)" class="ans"><span class="a">{{item}}</span>
+    </div>
 </div>

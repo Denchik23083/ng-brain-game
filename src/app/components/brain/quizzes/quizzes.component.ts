@@ -10,12 +10,7 @@ import { CheckPermission } from 'src/app/utils/check-permission';
   templateUrl: './quizzes.component.html',
   styleUrls: ['./quizzes.component.scss']
 })
-export class QuizzesComponent extends CheckPermission implements OnInit {
-
-  @Input()
-  permissions?: Permission[];
-
-  hasPermission = false;
+export class QuizzesComponent implements OnInit {
   
   quizzes: QuizzesModel = {
     id: 0,
@@ -24,13 +19,11 @@ export class QuizzesComponent extends CheckPermission implements OnInit {
 
   quizzes$!: BehaviorSubject<QuizzesModel[]>;
 
-  constructor(authService: AuthService, private service: BrainGameService, private router: Router) { 
-    super(authService);
+  constructor(private service: BrainGameService, private router: Router) { 
     this.quizzes$ = service.quizzes$;
   }
 
   ngOnInit(): void {
-    this.hasPermission = super.checkPermission(this.permissions);
     this.service.getQuizzes().subscribe();
   }
 
