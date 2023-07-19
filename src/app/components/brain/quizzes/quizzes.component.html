@@ -4,17 +4,9 @@
 </div>
 
 <div class="container" *ngIf="hasPermission else nopermission">
-    <div class="block1">
-        <h2 class="h2">Animals</h2>
-        <button class="red-buy" (click)="animal()">New Game</button>        
-    </div>
-    <div class="block2">
-        <h2 class="h2">Plants</h2>
-        <button class="orange-buy" (click)="plants()">New Game</button>    
-    </div>
-    <div class="block3">
-        <h2 class="h2">Mushrooms</h2>
-        <button class="blue-buy" (click)="mushrooms()">New Game</button>    
+    <div class="block" *ngFor="let quiz of (quizzes$ | async)">
+        <h2 class="h2">{{quiz.name}}</h2>
+        <button class="button btn-success" (click)="game(quiz.id)">New Game</button>        
     </div>
 </div>
 

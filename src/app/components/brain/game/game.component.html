@@ -1,8 +1,8 @@
 <app-header></app-header>
 
-<div *ngIf="quest$ | async as quest">
+<div *ngIf="quest as quest">
     <br>
-    <h2 class="h1">{{number}}) {{quest.question}}</h2>
+    <h2 class="h1">{{quest.number}}) {{quest.question}}</h2>
 </div>   
 
 <div *ngFor="let item of answers; let i = index;" class="answ">

@@ -19,7 +19,6 @@ import { GameComponent } from './components/brain/game/game.component';
 import { BrainGameService } from './services/brain-game-service';
 import { EditComponent } from './components/user/edit/edit.component';
 import { PointsComponent } from './components/brain/points/points.component';
-import { NewComponent } from './components/brain/new/new.component';
 import { PasswordComponent } from './components/user/password/password.component';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
@@ -54,7 +53,6 @@ import { AdminToUserComponent } from './components/user/admin-to-user/admin-to-u
     GameComponent,
     EditComponent,
     PointsComponent,
-    NewComponent,
     PasswordComponent,
     LoginPageComponent,
     RegisterPageComponent,

@@ -4,19 +4,20 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
 export interface QuestionModel{
-  id: number
+  id: number,
+  number: number,
   question: string
   answers: string
 }
 
 export interface CorrectsModel{
-  id: number,
+  questionId?: number,
   correctAnswer: string
 }
 
 export interface QuizzesModel{
+  id: number;
   name: string,
-  point: number,
 }
 
 export interface PointsModel{
@@ -30,23 +31,30 @@ export interface PointsModel{
 
 export class BrainGameService {
   apiLink = 'https://localhost:6001/api';
-  
-  quest$ = new BehaviorSubject<QuestionModel | null>(null);
-  corrects$ = new BehaviorSubject<CorrectsModel[]>([]);
+
   quizzes$ = new BehaviorSubject<QuizzesModel[]>([]);
+  questions$ = new BehaviorSubject<QuestionModel[]>([]);
+  corrects$ = new BehaviorSubject<CorrectsModel[]>([]);  
   points$ = new BehaviorSubject<PointsModel | null>(null);
 
   constructor(private http: HttpClient) { }  
 
-  getQuestionById(id: number): Observable<QuestionModel>{
-    return this.http.get<QuestionModel>(`${this.apiLink}/Quiz/id?id=${id}`)
+  getQuizzes(): Observable<QuizzesModel[]>{
+    return this.http.get<QuizzesModel[]>(`${this.apiLink}/quiz`)
       .pipe(
-        tap(ans => this.quest$.next(ans))
+        tap(quizzes => this.quizzes$.next(quizzes))
+      );
+  }
+
+  getQuestions(id: number): Observable<QuestionModel[]>{
+    return this.http.get<QuestionModel[]>(`${this.apiLink}/question/id?id=${id}`)
+      .pipe(
+        tap(ans => this.questions$.next(ans))
       );
   }
 
   corrects(model: CorrectsModel): Observable<CorrectsModel>{
-    return this.http.post<CorrectsModel>(`${this.apiLink}/Corrects`, model)
+    return this.http.post<CorrectsModel>(`${this.apiLink}/correct`, model)
     .pipe(
       tap(log => this.corrects$.next([...this.corrects$.value, log]))
     )
@@ -54,13 +62,6 @@ export class BrainGameService {
 
   removePoints(): Observable<{}>{
     return this.http.delete(`${this.apiLink}/Point`);
-  }
-
-  quizzes(model: QuizzesModel): Observable<QuizzesModel>{
-    return this.http.post<QuizzesModel>(`${this.apiLink}/Quiz`, model)
-    .pipe(
-      tap(log => this.quizzes$.next([...this.quizzes$.value, log]))
-    )
   }
 
   getPoints(): Observable<PointsModel>{

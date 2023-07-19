@@ -14,7 +14,7 @@
     margin: 10px;
 }
 
-.block1, .block2, .block3{
+.block{
     display: inline-block;
     border: 3px solid black;
     height: 600px;
@@ -26,23 +26,15 @@
     padding-top: 10px;
     margin: 10px;
 }
-.block1:hover, .block2:hover, .block3:hover{
+.block:hover{
     transition: 1s ease-in;
     transform: scale(1.05);
 }
-.block1{
-    background: url("/assets/animals.jpg") 50% 50% no-repeat;
+.block{
+    background: url("/assets/planet.jpg") 50% 50% no-repeat;
     background-size: cover; 
 }
-.block2{
-    background: url("/assets/plants.jpg") 50% 50% no-repeat;
-    background-size: cover;
-}
-.block3{
-    background: url("/assets/mushrooms.jpg") 50% 50% no-repeat;
-    background-size: cover;
-}
-.red-buy, .orange-buy, .blue-buy{
+.button{
     height: 60px;
     width: 150px;
     border-radius: 10px;
@@ -50,21 +42,10 @@
     margin-left: 10px;
     color: white;
     font-size: 25px;
+    background-color: #28a745;
+    border: #28a745;
 }
 .h2{color: white;}
-.red-buy{    
-    background-color: rgb(199, 60, 60); 
-    border: rgb(199, 60, 60);      
-}
-.orange-buy{
-    background-color: rgb(186, 142, 39);
-    border: rgb(186, 142, 39);  
-}
-
-.blue-buy{
-    background-color: rgb(42, 69, 219);
-    border: rgb(42, 69, 219);    
-}
 .close {
     position: absolute;
     right: 32px;
