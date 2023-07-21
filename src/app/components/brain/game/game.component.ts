@@ -11,7 +11,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class GameComponent implements OnInit {
 
   question: QuestionModel | undefined;
-  model: QuestionModel[] = [];
+  answers: string[] | undefined;
+  number: number = 1;
+
+  iter: number[] = [1, 2, 3];
 
   correct: CorrectsModel = {
     questionId: 0,
@@ -19,28 +22,24 @@ export class GameComponent implements OnInit {
   };
 
   constructor(private service: BrainGameService, private activatedRoute: ActivatedRoute, private router: Router) { }
-
-  number: any = 1;
-  answers: any;
-  iter = [1, 2, 3];
-
+ 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id') as any;
-    this.service.getQuestions(id).subscribe(model => {
-      this.model = model;
+    this.service.getQuestions(id).subscribe(() => {      
       this.getQuestion();
     });   
   }
 
   getQuestion(): void {
-    if(this.number > this.model.length)
+    const questions = this.service.questions$.value;
+    if(this.number > questions.length)
     {      
       this.number = 1;
       this.router.navigate([`/`]);
     }
 
-    this.question = this.model.find(b => b.number == this.number);
-    this.answers = this.question?.answers.split(',') as any;
+    this.question = questions.find(b => b.number == this.number);
+    this.answers = this.question?.answers.split(',');
   };
 
   correctAnswer(answer: string): void {
