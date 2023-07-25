@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { BrainGameService, PointsModel } from 'src/app/services/brain-game-service';
+import { StatisticsService } from 'src/app/services/quiz/statistics.service';
 
 @Component({
   selector: 'app-points',
@@ -9,10 +9,10 @@ import { BrainGameService, PointsModel } from 'src/app/services/brain-game-servi
 })
 export class PointsComponent implements OnInit {
 
-  points$: BehaviorSubject<PointsModel | null>
+  //points$: BehaviorSubject<PointsModel | null>
 
-  constructor(private service: BrainGameService) {
-    this.points$ = service.points$;
+  constructor(private service: StatisticsService) {
+    //this.points$ = service.points$;
   }
 
   ngOnInit(): void {
@@ -20,6 +20,6 @@ export class PointsComponent implements OnInit {
   }
 
   result(): void {
-    this.service.result().subscribe();
+    //this.service.result().subscribe();
   } 
 }

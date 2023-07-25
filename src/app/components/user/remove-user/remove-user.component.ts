@@ -1,9 +1,7 @@
-import { NgForOf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { AdminService } from 'src/app/services/admin.service';
-import { UserReadModel, UserService, UserWriteModel } from 'src/app/services/user.service';
+import { AdminService } from 'src/app/services/users/admin.service';
+import { UserReadModel, UserService, UserWriteModel } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'app-remove-user',

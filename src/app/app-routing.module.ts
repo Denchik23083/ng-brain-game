@@ -5,7 +5,7 @@ import { RegisterPageComponent } from './pages/auth/register-page/register-page.
 import { MainPageComponent } from './pages/main/main-page/main-page.component';
 import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
 import { PermissionGuard } from './utils/permission.guard';
-import { Permission } from './services/auth.service';
+import { Permission } from './services/auth/auth.service';
 import { QuizzesPageComponent } from './pages/brain/quizzes-page/quizzes-page.component';
 import { RemoveUserPageComponent } from './pages/user/remove-user-page/remove-user-page.component';
 import { UserToAdminPageComponent } from './pages/user/user-to-admin-page/user-to-admin-page.component';

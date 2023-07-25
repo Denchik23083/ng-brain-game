@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Permission } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-quizzes-page',

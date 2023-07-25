@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { AuthService, TokenData } from 'src/app/services/auth.service';
-import { UserService } from 'src/app/services/user.service';
+import { AuthService, TokenData } from 'src/app/services/auth/auth.service';
+import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'app-profile',

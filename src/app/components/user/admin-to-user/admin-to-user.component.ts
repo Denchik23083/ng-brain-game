@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { AdminReadModel, AdminService } from 'src/app/services/admin.service';
-import { GodService } from 'src/app/services/god.service';
+import { AdminReadModel, AdminService } from 'src/app/services/users/admin.service';
+import { GodService } from 'src/app/services/users/god.service';
 
 @Component({
   selector: 'app-admin-to-user',

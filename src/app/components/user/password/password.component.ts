@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PasswordModel, UserService } from 'src/app/services/user.service';
+import { PasswordModel, UserService } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'app-password',
