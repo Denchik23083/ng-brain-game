@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StatisticsModel, UserService } from 'src/app/services/user.service';
+import { StatisticsModel, StatisticsService } from 'src/app/services/quiz/statistics.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -11,7 +11,7 @@ export class StatisticsComponent implements OnInit {
 
   statistics$: BehaviorSubject<StatisticsModel[]>;
 
-  constructor(private service: UserService) {
+  constructor(private service: StatisticsService) {
     this.statistics$ = service.statistics$;
   }
 

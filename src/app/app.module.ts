@@ -16,12 +16,11 @@ import { HeaderComponent } from './components/headers/header/header.component';
 import { AuthHeaderComponent } from './components/headers/auth-header/auth-header.component';
 import { ProfileStatisticsHeaderComponent } from './components/headers/profile-statistics-header/profile-statistics-header.component';
 import { GameComponent } from './components/brain/game/game.component';
-import { BrainGameService } from './services/brain-game-service';
 import { EditComponent } from './components/user/edit/edit.component';
 import { PointsComponent } from './components/brain/points/points.component';
 import { PasswordComponent } from './components/user/password/password.component';
-import { AuthService } from './services/auth.service';
-import { UserService } from './services/user.service';
+import { AuthService } from './services/auth/auth.service';
+import { UserService } from './services/users/user.service';
 import { AuthInterceptor } from './utils/auth.interceptor';
 import { RefreshInterceptor } from './utils/refresh.interceptor';
 import { LoginPageComponent } from './pages/auth/login-page/login-page.component';
@@ -41,6 +40,12 @@ import { EditPageComponent } from './pages/user/edit-page/edit-page.component';
 import { PasswordPageComponent } from './pages/user/password-page/password-page.component';
 import { GamePageComponent } from './pages/brain/game-page/game-page.component';
 import { PointsPageComponent } from './pages/brain/points-page/points-page.component';
+import { GodService } from './services/users/god.service';
+import { AdminService } from './services/users/admin.service';
+import { QuizService } from './services/quiz/quiz.service';
+import { QuestionService } from './services/quiz/question.service';
+import { CorrectService } from './services/quiz/correct.service';
+import { StatisticsService } from './services/quiz/statistics.service';
 
 @NgModule({
   declarations: [
@@ -85,8 +90,13 @@ import { PointsPageComponent } from './pages/brain/points-page/points-page.compo
   ],
   providers: [
     AuthService,
-    BrainGameService,
-    UserService,
+    UserService,    
+    AdminService,
+    GodService,
+    QuizService,
+    QuestionService,
+    CorrectService,
+    StatisticsService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: RefreshInterceptor, multi: true },
   ],

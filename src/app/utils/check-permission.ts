@@ -1,5 +1,5 @@
 import { BehaviorSubject } from "rxjs";
-import { AuthService, Permission, TokenData } from "../services/auth.service";
+import { AuthService, Permission, TokenData } from "../services/auth/auth.service";
 
 export class CheckPermission {
     tokenData: BehaviorSubject<TokenData>;

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { AuthService, TokenData } from 'src/app/services/auth.service';
+import { AuthService, TokenData } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-main',

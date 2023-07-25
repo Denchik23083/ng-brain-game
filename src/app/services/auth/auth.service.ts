@@ -48,7 +48,7 @@ export enum Permission {
   providedIn: 'root'
 })
 export class AuthService {
-  apiLink = 'https://localhost:5001/api';
+  apiLink = 'https://localhost:5001/api/auth';
   tokenKey = 'jwtToken';
   refreshTokenKey = 'refreshToken';
 

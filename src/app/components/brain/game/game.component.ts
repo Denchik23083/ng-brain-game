@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BrainGameService, QuestionModel, CorrectsModel } from 'src/app/services/brain-game-service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { QuestionModel, QuestionService } from 'src/app/services/quiz/question.service';
+import { CorrectsModel, CorrectService } from 'src/app/services/quiz/correct.service';
 
 @Component({
   selector: 'app-game',
@@ -21,7 +22,10 @@ export class GameComponent implements OnInit {
     correctAnswer: ''
   };
 
-  constructor(private service: BrainGameService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private service: QuestionService, 
+    private correctService: CorrectService,
+    private activatedRoute: ActivatedRoute, 
+    private router: Router) { }
  
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id') as any;
@@ -45,7 +49,7 @@ export class GameComponent implements OnInit {
   correctAnswer(answer: string): void {
     this.correct = { questionId: this.question?.id, correctAnswer: answer}
     
-    this.service.corrects(this.correct).subscribe(() => {
+    this.correctService.corrects(this.correct).subscribe(() => {
       this.number++;
       this.getQuestion();
     });

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, Permission } from 'src/app/services/auth.service';
+import { AuthService, Permission } from 'src/app/services/auth/auth.service';
 import { CheckPermission } from 'src/app/utils/check-permission';
 
 @Component({
