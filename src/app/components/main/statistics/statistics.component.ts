@@ -16,12 +16,10 @@ export class StatisticsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getPoints().subscribe();
+    this.service.getStatistics().subscribe();
   }
 
   clear(): void {
-    this.service.clearStatistics().subscribe(() => {
-      this.ngOnInit();
-    });
+    this.service.clearStatistics().subscribe();
   }
 }
