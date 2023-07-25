@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { StatisticsService } from 'src/app/services/quiz/statistics.service';
+import { ActivatedRoute } from '@angular/router';
+import { StatisticsModel, StatisticsService } from 'src/app/services/quiz/statistics.service';
 
 @Component({
   selector: 'app-points',
@@ -9,17 +10,16 @@ import { StatisticsService } from 'src/app/services/quiz/statistics.service';
 })
 export class PointsComponent implements OnInit {
 
-  //points$: BehaviorSubject<PointsModel | null>
+  points$: BehaviorSubject<StatisticsModel>
 
-  constructor(private service: StatisticsService) {
-    //this.points$ = service.points$;
+  id!: number;
+
+  constructor(private service: StatisticsService, private activatedRoute: ActivatedRoute) {
+    this.points$ = service.points$;
   }
 
   ngOnInit(): void {
-    this.service.getPoints().subscribe();
+    this.id = this.activatedRoute.snapshot.paramMap.get('id') as any;
+    this.service.getPoints(this.id).subscribe();
   }
-
-  result(): void {
-    //this.service.result().subscribe();
-  } 
 }

@@ -16,7 +16,7 @@ export class CorrectService {
 
   constructor(private http: HttpClient) { }
 
-  corrects(model: CorrectsModel): Observable<CorrectsModel>{
-    return this.http.post<CorrectsModel>(`${this.apiLink}/correct`, model);
+  corrects(model: CorrectsModel, id: number): Observable<CorrectsModel>{
+    return this.http.post<CorrectsModel>(`${this.apiLink}/id?id=${id}`, model);
   }
 }
