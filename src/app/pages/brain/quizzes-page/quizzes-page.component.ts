@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Permission } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-quizzes-page',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quizzes-page.component.scss']
 })
 export class QuizzesPageComponent implements OnInit {
+
+  public permission = Permission;
 
   constructor() { }
 
