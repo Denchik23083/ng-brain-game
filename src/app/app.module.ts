@@ -46,6 +46,10 @@ import { QuizService } from './services/quiz/quiz.service';
 import { QuestionService } from './services/quiz/question.service';
 import { CorrectService } from './services/quiz/correct.service';
 import { StatisticsService } from './services/quiz/statistics.service';
+import { UpdateQuizzesPageComponent } from './pages/brain/update-quizzes-page/update-quizzes-page.component';
+import { AddQuizzesPageComponent } from './pages/brain/add-quizzes-page/add-quizzes-page.component';
+import { AddQuizzesComponent } from './components/brain/add-quizzes/add-quizzes.component';
+import { UpdateQuizzesComponent } from './components/brain/update-quizzes/update-quizzes.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +83,11 @@ import { StatisticsService } from './services/quiz/statistics.service';
     EditPageComponent,
     PasswordPageComponent,
     GamePageComponent,
-    PointsPageComponent,    
+    PointsPageComponent,
+    UpdateQuizzesPageComponent,
+    AddQuizzesPageComponent,
+    AddQuizzesComponent,
+    UpdateQuizzesComponent,    
   ],
   imports: [
     BrowserModule,

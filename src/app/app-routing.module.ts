@@ -15,6 +15,8 @@ import { PasswordPageComponent } from './pages/user/password-page/password-page.
 import { StatisticsPageComponent } from './pages/main/statistics-page/statistics-page.component';
 import { GamePageComponent } from './pages/brain/game-page/game-page.component';
 import { PointsPageComponent } from './pages/brain/points-page/points-page.component';
+import { AddQuizzesPageComponent } from './pages/brain/add-quizzes-page/add-quizzes-page.component';
+import { UpdateQuizzesPageComponent } from './pages/brain/update-quizzes-page/update-quizzes-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent, pathMatch: 'full'},
@@ -79,6 +81,18 @@ const routes: Routes = [
     component: PointsPageComponent,
     canActivate: [PermissionGuard],
     data: { permissions: [Permission.getQuiz] }
+  },
+  { 
+    path: 'quizzes/add', 
+    component: AddQuizzesPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.editQuiz] }
+  },
+  { 
+    path: 'quizzes/:id/edit', 
+    component: UpdateQuizzesPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.editQuiz] }
   }
 ];
 
