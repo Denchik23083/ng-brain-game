@@ -29,8 +29,8 @@ export class QuizzesComponent extends CheckPermission implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getQuizzes().subscribe();
     this.hasPermissions = super.checkPermission(this.permissions);
+    this.service.getQuizzes().subscribe();    
   }
 
   game(id: number): void {
@@ -46,5 +46,6 @@ export class QuizzesComponent extends CheckPermission implements OnInit {
   }
 
   remove(id: number): void {
+    this.service.remove(id).subscribe();
   }
 }

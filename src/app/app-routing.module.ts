@@ -71,6 +71,12 @@ const routes: Routes = [
     data: { permissions: [Permission.getQuiz] }
   },
   { 
+    path: 'quizzes/add', 
+    component: AddQuizzesPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.editQuiz] }
+  },
+  { 
     path: 'quizzes/:id', 
     component: GamePageComponent,
     canActivate: [PermissionGuard],
@@ -81,12 +87,6 @@ const routes: Routes = [
     component: PointsPageComponent,
     canActivate: [PermissionGuard],
     data: { permissions: [Permission.getQuiz] }
-  },
-  { 
-    path: 'quizzes/add', 
-    component: AddQuizzesPageComponent,
-    canActivate: [PermissionGuard],
-    data: { permissions: [Permission.editQuiz] }
   },
   { 
     path: 'quizzes/:id/edit', 

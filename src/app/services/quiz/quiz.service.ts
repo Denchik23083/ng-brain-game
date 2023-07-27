@@ -25,4 +25,29 @@ export class QuizService {
         tap(quizzes => this.quizzes$.next(quizzes))
       );
   }
+
+  add(model: QuizzesModel): Observable<QuizzesModel> {
+    return this.http.post<QuizzesModel>(this.apiLink, model)
+      .pipe(
+        tap(() => this.quizzes$.next([...this.quizzes$.value, model]))
+      );
+  }
+
+  update(model: QuizzesModel, id: number): Observable<{}> {
+    const updatedQuiz = this.quizzes$.value.map(b => b.id === model.id ? model : b);
+
+    return this.http.put<{}>(`${this.apiLink}/id?id=${id}`, model)
+      .pipe(
+        tap(() => this.quizzes$.next(updatedQuiz))
+      );
+  }
+
+  remove(id: number): Observable<{}> {
+    const removeQuiz = this.quizzes$.value.filter(b => b.id !== id);
+
+    return this.http.delete<{}>(`${this.apiLink}/id?id=${id}`)
+      .pipe(
+        tap(() => this.quizzes$.next(removeQuiz))
+      );
+  }
 }
