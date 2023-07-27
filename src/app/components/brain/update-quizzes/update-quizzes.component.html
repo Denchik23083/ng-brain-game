@@ -1,1 +1,9 @@
-<p>update-quizzes works!</p>
+<div class="body">
+    <span routerLink="/profile" class="close"></span>
+    <br />
+    <form #form="ngForm" (ngSubmit)="submit(form)">
+        <input [(ngModel)] = 'quiz.name' name='name' placeholder="name" class="form-control"/><br />
+    
+        <button type='submit' class="form-control btn btn-success">Update</button>
+    </form>
+</div>
