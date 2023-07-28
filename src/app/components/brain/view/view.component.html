@@ -1,0 +1,28 @@
+<div class="body">
+    <span routerLink="/quizzes" class="close"></span>
+    <br />
+    <table class="table table-striped">
+        <thead>
+            <tr scope="col">
+                <td><strong>Number</strong></td>
+                <td><strong>Question</strong></td>
+                <td><strong>Answers</strong></td>
+                <td *ngIf="hasPermissions"><strong>Correct</strong></td>
+                <td *ngIf="hasPermissions"><strong>Actions</strong></td>
+            </tr>
+        </thead>
+        <tbody *ngFor="let question of (questions$ | async)" >            
+            <tr scope="row">
+                <td>{{question.number}}</td>
+                <td>{{question.question}}</td>
+                <td>{{question.answers}}</td>
+                <td *ngIf="hasPermissions">{{question.correct.correctAnswer}}</td>
+                <td *ngIf="hasPermissions">
+                    <button class="editbutton btn-warning" *ngIf="hasPermissions" (click)="edit(question.id)">Edit</button>        
+                    <button class="deletebutton btn-danger" *ngIf="hasPermissions" (click)="remove(question.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="addbutton btn-success" *ngIf="hasPermissions" (click)="add()">Add</button>
+</div>

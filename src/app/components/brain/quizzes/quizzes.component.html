@@ -4,9 +4,12 @@
     <div class="container">
         <div class="block" *ngFor="let quiz of (quizzes$ | async)">
             <h2 class="h2">{{quiz.name}}</h2>
-            <button class="button btn-success" (click)="game(quiz.id)">New Game</button><br />  
-            <button class="editbutton btn-warning" *ngIf="hasPermissions" (click)="edit(quiz.id)">Edit</button>        
-            <button class="deletebutton btn-danger" *ngIf="hasPermissions" (click)="remove(quiz.id)">Delete</button>        
+            <div class="buttons">
+                <button class="button btn-success" (click)="game(quiz.id)">New Game</button><br />  
+                <button class="button btn-primary" (click)="view(quiz.id)">View</button><br />  
+                <button class="editbutton btn-warning" *ngIf="hasPermissions" (click)="edit(quiz.id)">Edit</button>        
+                <button class="deletebutton btn-danger" *ngIf="hasPermissions" (click)="remove(quiz.id)">Delete</button>
+            </div>                    
         </div>
     </div>
     <button class="addbutton btn-success" *ngIf="hasPermissions" (click)="add()">Add</button>

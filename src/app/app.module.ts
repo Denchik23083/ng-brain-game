@@ -50,6 +50,12 @@ import { UpdateQuizzesPageComponent } from './pages/brain/update-quizzes-page/up
 import { AddQuizzesPageComponent } from './pages/brain/add-quizzes-page/add-quizzes-page.component';
 import { AddQuizzesComponent } from './components/brain/add-quizzes/add-quizzes.component';
 import { UpdateQuizzesComponent } from './components/brain/update-quizzes/update-quizzes.component';
+import { ViewPageComponent } from './pages/brain/view-page/view-page.component';
+import { ViewComponent } from './components/brain/view/view.component';
+import { AddViewPageComponent } from './pages/brain/add-view-page/add-view-page.component';
+import { UpdateViewPageComponent } from './pages/brain/update-view-page/update-view-page.component';
+import { UpdateViewComponent } from './components/brain/update-view/update-view.component';
+import { AddViewComponent } from './components/brain/add-view/add-view.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +93,13 @@ import { UpdateQuizzesComponent } from './components/brain/update-quizzes/update
     UpdateQuizzesPageComponent,
     AddQuizzesPageComponent,
     AddQuizzesComponent,
-    UpdateQuizzesComponent,    
+    UpdateQuizzesComponent,
+    ViewPageComponent,
+    ViewComponent,
+    AddViewPageComponent,
+    UpdateViewPageComponent,
+    UpdateViewComponent,
+    AddViewComponent,    
   ],
   imports: [
     BrowserModule,
