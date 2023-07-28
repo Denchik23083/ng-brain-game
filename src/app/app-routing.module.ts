@@ -17,6 +17,7 @@ import { GamePageComponent } from './pages/brain/game-page/game-page.component';
 import { PointsPageComponent } from './pages/brain/points-page/points-page.component';
 import { AddQuizzesPageComponent } from './pages/brain/add-quizzes-page/add-quizzes-page.component';
 import { UpdateQuizzesPageComponent } from './pages/brain/update-quizzes-page/update-quizzes-page.component';
+import { ViewPageComponent } from './pages/brain/view-page/view-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent, pathMatch: 'full'},
@@ -79,6 +80,12 @@ const routes: Routes = [
   { 
     path: 'quizzes/:id', 
     component: GamePageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.getQuiz] }
+  },
+  { 
+    path: 'quizzes/:id/view', 
+    component: ViewPageComponent,
     canActivate: [PermissionGuard],
     data: { permissions: [Permission.getQuiz] }
   },

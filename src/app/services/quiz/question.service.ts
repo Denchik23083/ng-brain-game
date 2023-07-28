@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
+import { CorrectsModel } from './correct.service';
 
 export interface QuestionModel{
   id: number,
   number: number,
   question: string
-  answers: string
+  answers: string,
+  correct: CorrectsModel
 }
 
 @Injectable({

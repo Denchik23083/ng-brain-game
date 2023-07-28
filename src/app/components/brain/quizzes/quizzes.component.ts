@@ -37,6 +37,10 @@ export class QuizzesComponent extends CheckPermission implements OnInit {
     this.router.navigate([`/quizzes/${id}`]);
   }
 
+  view(id: number): void {
+    this.router.navigate([`/quizzes/${id}/view`]);
+  }
+
   add(): void {
     this.router.navigate(['/quizzes/add']);
   }
