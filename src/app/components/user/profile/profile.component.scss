@@ -19,7 +19,7 @@
 	width: 100%;
 	background-color: white;
 	border: 0.5px solid black;
-	border-radius: 4px;
+	border-radius: 10px;
 }
 .male, .female{
 	height: 250px;
@@ -28,36 +28,23 @@
 	border-radius: 50%;
 }
 .hr{color: #DCDCDC;}
-.button{
-	background-color: lightblue;
-	width: 250px;
-	height: 50px;
-	text-align: center;
-	margin: 50px;
-  	margin-left: 120px;
-	border: 0px;
-	border-radius: 4px;
-}
 .edit, .logout, .password{	
 	width: 250px;
 	height: 50px;
-	text-align: center;
-	margin: 5px;
-  	margin-left: 120px;
-	border: 0px;
-	border-radius: 4px;
-	font-size: 25px;
-	color: white;
+	text-align: center;  	
+	margin: 10px;
+	margin-left: 120px;	
+    text-decoration: none;
+    border: none;
+    color: white;
+    font-size: 25px;
 }
-.edit{background-color: rgb(184, 92, 7);}
-.logout{background-color: rgb(204, 6, 6);}
-.password{background-color: #28a745;}
 .danie{
 	width: 500px;
 	background-color: white;
 	margin-left: 20px;
 	border: 0.5px solid black;
-	border-radius: 4px;
+	border-radius: 10px;
 }
 .Name{
   margin-top: 10px;

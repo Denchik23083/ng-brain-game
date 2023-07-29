@@ -50,6 +50,6 @@ export class QuizzesComponent extends CheckPermission implements OnInit {
   }
 
   remove(id: number): void {
-    this.service.remove(id).subscribe();
+    this.service.removeQuiz(id).subscribe();
   }
 }

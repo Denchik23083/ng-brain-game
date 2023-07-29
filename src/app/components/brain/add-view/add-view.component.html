@@ -1,1 +1,16 @@
-<p>add-view works!</p>
+<div class="body">
+    <span (click)="routers()" class="close"></span>
+    <br />
+    <form #form="ngForm" (ngSubmit)="submit(form)">
+        <input [(ngModel)] = 'question.number' type='number' name="number" placeholder="number" class="form-control"/><br />
+        <input [(ngModel)] = 'question.question' name='question' placeholder="question" class="form-control"/><br />
+        <input type="checkbox" (click)="firstCorrect()" [checked]="firstChecked" [disabled]="isFirstDisabled" class="ans">
+        <input [(ngModel)] = 'firstAnswer' name='firstAnswer' placeholder="firstAnswer" class="form-control"/><br />
+        <input type="checkbox" (click)="secondCorrect()" [checked]="secondChecked" [disabled]="isSecondDisabled" class="ans">
+        <input [(ngModel)] = 'secondAnswer' name='secondAnswer' placeholder="secondAnswer" class="form-control"/><br />
+        <input type="checkbox" (click)="thirdCorrect()" [checked]="thirdChecked" [disabled]="isThirdDisabled" class="ans">
+        <input [(ngModel)] = 'thirdAnswer' name='thirdAnswer' placeholder="thirdAnswer" class="form-control"/><br />
+    
+        <button type='submit' class="form-control btn btn-success">Add</button>
+    </form>
+</div>

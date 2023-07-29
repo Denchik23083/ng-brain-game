@@ -28,17 +28,4 @@ export class RemoveUserComponent implements OnInit {
   removeUser(id: number): void{
     this.service.removeUser(id).subscribe();
   }
-
-  /*filter(ngForm: NgForm): void{
-    //this.userService.getUsers().subscribe();
-
-    var email = ngForm.value.email;
-
-    const updatedArr = this.users$.value.filter(b => b.email.startsWith(`${email}`));
-
-    console.log(updatedArr);
-
-    this.users$.next(updatedArr);
-  }*/
-
 }

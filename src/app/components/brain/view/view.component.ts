@@ -39,7 +39,7 @@ export class ViewComponent extends CheckPermission implements OnInit {
   }
 
   remove(questionId: number): void {
-    //this.service.remove(id).subscribe();
+    this.service.removeQuestion(questionId).subscribe();
   }
 
 }

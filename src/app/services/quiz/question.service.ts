@@ -12,6 +12,15 @@ export interface QuestionModel{
   correct: CorrectsModel
 }
 
+export interface QuestionWriteModel{
+  id: number,
+  number: number,
+  question: string
+  answers: string,
+  quizId: number
+  correct: CorrectsModel
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,6 +36,32 @@ export class QuestionService {
     return this.http.get<QuestionModel[]>(`${this.apiLink}/id?id=${id}`)
       .pipe(
         tap(ans => this.questions$.next(ans))
+      );
+  }
+
+  addQuestion(model: QuestionModel): Observable<QuestionModel>{
+    return this.http.post<QuestionModel>(this.apiLink, model)
+      .pipe(
+        tap(() => this.questions$.next([...this.questions$.value, model]))
+      );
+  }
+
+  updateQuestion(model: QuestionModel, id: number): Observable<{}>{
+
+    const updatedQuestion = this.questions$.value.map(b => b.id === id ? model : b);
+
+    return this.http.put<{}>(`${this.apiLink}/id?id=${id}`, model)
+      .pipe(
+        tap(() => this.questions$.next(updatedQuestion))
+      );
+  }
+
+  removeQuestion(id: number): Observable<{}> {
+    const removeQuestion = this.questions$.value.filter(b => b.id !== id);
+
+    return this.http.delete<{}>(`${this.apiLink}/id?id=${id}`)
+      .pipe(
+        tap(() => this.questions$.next(removeQuestion))
       );
   }
 }
