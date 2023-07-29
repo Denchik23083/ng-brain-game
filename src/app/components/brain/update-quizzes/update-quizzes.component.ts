@@ -15,17 +15,18 @@ export class UpdateQuizzesComponent implements OnInit {
     name: '',
   };
 
+  id!: number;
+
   constructor(private readonly service: QuizService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.id = this.activatedRoute.snapshot.paramMap.get('id') as any;
   }
 
   submit(form: NgForm): void {
-    const id = this.activatedRoute.snapshot.paramMap.get('id') as any
-
     const updateQuiz = form.value as QuizzesModel;
     
-    this.service.update(updateQuiz, id).subscribe(() => {
+    this.service.updateQuiz(updateQuiz, this.id).subscribe(() => {
       this.router.navigate(['/quizzes']);
     });
   }

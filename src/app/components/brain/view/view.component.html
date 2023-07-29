@@ -18,11 +18,11 @@
                 <td>{{question.answers}}</td>
                 <td *ngIf="hasPermissions">{{question.correct.correctAnswer}}</td>
                 <td *ngIf="hasPermissions">
-                    <button class="editbutton btn-warning" *ngIf="hasPermissions" (click)="edit(question.id)">Edit</button>        
-                    <button class="deletebutton btn-danger" *ngIf="hasPermissions" (click)="remove(question.id)">Delete</button>
+                    <button class="editbutton btn btn-warning" *ngIf="hasPermissions" (click)="edit(question.id)">Edit</button>        
+                    <button class="deletebutton btn btn-danger" *ngIf="hasPermissions" (click)="remove(question.id)">Delete</button>
                 </td>
             </tr>
         </tbody>
     </table>
-    <button class="addbutton btn-success" *ngIf="hasPermissions" (click)="add()">Add</button>
+    <button class="addbutton btn btn-success" *ngIf="hasPermissions" (click)="add()">Add</button>
 </div>

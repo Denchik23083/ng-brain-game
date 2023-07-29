@@ -18,6 +18,8 @@ import { PointsPageComponent } from './pages/brain/points-page/points-page.compo
 import { AddQuizzesPageComponent } from './pages/brain/add-quizzes-page/add-quizzes-page.component';
 import { UpdateQuizzesPageComponent } from './pages/brain/update-quizzes-page/update-quizzes-page.component';
 import { ViewPageComponent } from './pages/brain/view-page/view-page.component';
+import { AddViewPageComponent } from './pages/brain/add-view-page/add-view-page.component';
+import { UpdateViewPageComponent } from './pages/brain/update-view-page/update-view-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent, pathMatch: 'full'},
@@ -88,6 +90,18 @@ const routes: Routes = [
     component: ViewPageComponent,
     canActivate: [PermissionGuard],
     data: { permissions: [Permission.getQuiz] }
+  },
+  { 
+    path: 'quizzes/:id/view/add', 
+    component: AddViewPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.editQuiz] }
+  },
+  { 
+    path: 'quizzes/:id/view/:questionId/edit', 
+    component: UpdateViewPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.editQuiz] }
   },
   { 
     path: 'quizzes/:id/points', 

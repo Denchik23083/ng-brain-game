@@ -23,7 +23,7 @@ export class AddQuizzesComponent implements OnInit {
   submit(form: NgForm): void {
     const addQuiz = form.value as QuizzesModel;
     
-    this.service.add(addQuiz).subscribe(() => {
+    this.service.addQuiz(addQuiz).subscribe(() => {
       this.router.navigate(['/quizzes']);
     });
   }
