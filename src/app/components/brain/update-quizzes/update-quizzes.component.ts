@@ -17,7 +17,7 @@ export class UpdateQuizzesComponent implements OnInit {
 
   id!: number;
 
-  constructor(private readonly service: QuizService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private service: QuizService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id') as any;

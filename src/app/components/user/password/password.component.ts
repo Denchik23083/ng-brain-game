@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { PasswordModel, UserService } from 'src/app/services/users/user.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class PasswordComponent implements OnInit {
     confirmPassword: '',
   };
 
-  constructor(private readonly service: UserService, private router: Router) { }
+  constructor(private service: UserService) { }
 
   ngOnInit(): void {
   }

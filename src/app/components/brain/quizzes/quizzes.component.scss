@@ -1,20 +1,7 @@
-.h1{
-    text-align: center;
-}
-
-.but{
-    margin-top: 10px;
-    margin-left: 10px;
-}
-.link{
-    text-decoration: none;
-    color: black;
-}
 .body{
     margin: 10px;
 }
-
-.block{
+.quizzes{
     display: inline-block;
     border: 3px solid black;
     min-height: 600px;
@@ -26,11 +13,11 @@
     padding-top: 10px;
     margin: 10px;
 }
-.block:hover{
+.quizzes:hover{
     transition: 1s ease-in;
     transform: scale(1.05);
 }
-.block{
+.quizzes{
     background: url("/assets/planet.jpg") 50% 50% no-repeat;
     background-size: cover; 
 }

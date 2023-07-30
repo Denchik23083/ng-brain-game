@@ -1,7 +1,7 @@
 <div class="body">
     <div *ngIf="question as quest">
         <br>
-        <h2 class="h1">{{quest.number}}) {{quest.question}}</h2>
+        <h2>{{quest.number}}) {{quest.question}}</h2>
     </div>   
     
     <div *ngFor="let item of answers; let i = index;" class="answ">

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserWriteModel, UserService } from 'src/app/services/users/user.service';
-import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -15,7 +14,7 @@ export class EditComponent implements OnInit {
     email: '',
   };
 
-  constructor(private readonly service: UserService, private router: Router) { }
+  constructor(private service: UserService) { }
 
   ngOnInit(): void {
   }

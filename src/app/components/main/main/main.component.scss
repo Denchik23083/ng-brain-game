@@ -1,7 +1,7 @@
 .body{
     margin: 10px;
 }
-.block1{
+.quiz{
     display: inline-block;
     border: 3px solid black;
     min-height: 600px;
@@ -15,7 +15,7 @@
     background: url("/assets/planet.jpg") no-repeat;
     background-size: cover;
 }
-.block1:hover{
+.quiz:hover{
     transition: 1s ease-in;
     transform: scale(1.05);
 }
