@@ -15,7 +15,7 @@ export class AddQuizzesComponent implements OnInit {
     name: '',
   };
 
-  constructor(private readonly service: QuizService, private router: Router) { }
+  constructor(private service: QuizService, private router: Router) { }
 
   ngOnInit(): void {
   }

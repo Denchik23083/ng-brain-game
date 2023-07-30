@@ -12,7 +12,7 @@ export class ProfileComponent implements OnInit {
 
   user$: BehaviorSubject<TokenData>;  
 
-  constructor(private authService: AuthService, private userService: UserService) {
+  constructor(authService: AuthService, private userService: UserService) {
     this.user$ = authService.tokenData$;
   }
 

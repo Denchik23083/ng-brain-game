@@ -1,2 +1,5 @@
-<app-admin-god-header></app-admin-god-header>
+<app-admin-god-header 
+    [adminPermission]="[permission.removeUser]" 
+    [godPermission]="[permission.removeUser, permission.userToAdmin, permission.adminToUser]">
+</app-admin-god-header>
 <app-profile></app-profile>

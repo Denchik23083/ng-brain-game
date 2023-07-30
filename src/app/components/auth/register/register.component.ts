@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   genders: GenderModel[] = [];
   
-  constructor(private readonly service: AuthService) { }
+  constructor(private service: AuthService) { }
 
   ngOnInit(): void {
     this.service.getGenders().subscribe(gender => this.genders = gender);

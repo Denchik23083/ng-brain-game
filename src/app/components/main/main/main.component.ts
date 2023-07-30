@@ -12,7 +12,7 @@ export class MainComponent implements OnInit {
   
   tokenData: BehaviorSubject<TokenData>;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(authService: AuthService, private router: Router) {
     this.tokenData = authService.tokenData$;
   }
 

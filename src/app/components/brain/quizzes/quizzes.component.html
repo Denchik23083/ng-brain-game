@@ -2,7 +2,7 @@
     <span routerLink="/" class="close"></span>
     <br />
     <div class="container">
-        <div class="block" *ngFor="let quiz of (quizzes$ | async)">
+        <div class="quizzes" *ngFor="let quiz of (quizzes$ | async)">
             <h2 class="h2">{{quiz.name}}</h2>
             <div class="buttons">
                 <button class="button btn btn-success" (click)="game(quiz.id)">New Game</button><br />  
