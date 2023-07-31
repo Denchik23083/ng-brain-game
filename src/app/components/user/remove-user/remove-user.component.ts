@@ -10,10 +10,7 @@ import { UserReadModel, UserService, UserWriteModel } from 'src/app/services/use
 })
 export class RemoveUserComponent implements OnInit {
 
-  user: UserWriteModel = {
-    name: '',
-    email: '',
-  };
+  email: string = "";
 
   users$: BehaviorSubject<UserReadModel[]>;
 
@@ -27,5 +24,17 @@ export class RemoveUserComponent implements OnInit {
 
   removeUser(id: number): void{
     this.service.removeUser(id).subscribe();
+  }
+
+  filter(): void{
+    this.userService.getUsers().subscribe(() => {
+      const updatedArr = this.users$.value.filter(b => b.email.startsWith(`${this.email}`));
+      this.users$.next(updatedArr);
+    });
+  }
+
+  reset(): void{
+    this.email = "";
+    this.filter();
   }
 }

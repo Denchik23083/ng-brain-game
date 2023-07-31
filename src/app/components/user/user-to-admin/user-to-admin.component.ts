@@ -10,6 +10,8 @@ import { UserReadModel, UserService } from 'src/app/services/users/user.service'
 })
 export class UserToAdminComponent implements OnInit {
 
+  email: string = "";
+
   users$: BehaviorSubject<UserReadModel[]>;
 
   constructor(private service: GodService, private userService: UserService) {
@@ -22,6 +24,18 @@ export class UserToAdminComponent implements OnInit {
 
   userToAdmin(id: number): void{
     this.service.userToAdmin(id).subscribe();
+  }
+
+  filter(): void{
+    this.userService.getUsers().subscribe(() => {
+      const updatedArr = this.users$.value.filter(b => b.email.startsWith(`${this.email}`));
+      this.users$.next(updatedArr);
+    });
+  }
+
+  reset(): void{
+    this.email = "";
+    this.filter();
   }
 
 }
