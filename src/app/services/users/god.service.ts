@@ -18,7 +18,7 @@ export class GodService {
   userToAdmin(id: number): Observable<{}> {
     const updateUser = this.userService.users$.value.filter(b => b.id !== id);
 
-    return this.http.put<{}>(`${this.apiLink}/usertoadmin/id?id=${id}`, null)
+    return this.http.put<{}>(`${this.apiLink}/usertoadmin/${id}`, null)
       .pipe(
         tap(() => this.userService.users$.next(updateUser))
       );
@@ -27,7 +27,7 @@ export class GodService {
   adminToUser(id: number): Observable<{}> {
     const updateAdmin = this.adminService.admins$.value.filter(b => b.id !== id);
 
-    return this.http.put<{}>(`${this.apiLink}/admintouser/id?id=${id}`, null)
+    return this.http.put<{}>(`${this.apiLink}/admintouser/${id}`, null)
       .pipe(
         tap(() => this.adminService.admins$.next(updateAdmin))
       );

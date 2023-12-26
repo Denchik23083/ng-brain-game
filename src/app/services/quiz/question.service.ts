@@ -33,7 +33,7 @@ export class QuestionService {
   constructor(private http: HttpClient) { }
 
   getQuestions(id: number): Observable<QuestionModel[]>{
-    return this.http.get<QuestionModel[]>(`${this.apiLink}/id?id=${id}`)
+    return this.http.get<QuestionModel[]>(`${this.apiLink}/${id}`)
       .pipe(
         tap(ans => this.questions$.next(ans))
       );
@@ -50,7 +50,7 @@ export class QuestionService {
 
     const updatedQuestion = this.questions$.value.map(b => b.id === id ? model : b);
 
-    return this.http.put<{}>(`${this.apiLink}/id?id=${id}`, model)
+    return this.http.put<{}>(`${this.apiLink}/${id}`, model)
       .pipe(
         tap(() => this.questions$.next(updatedQuestion))
       );
@@ -59,7 +59,7 @@ export class QuestionService {
   removeQuestion(id: number): Observable<{}> {
     const removeQuestion = this.questions$.value.filter(b => b.id !== id);
 
-    return this.http.delete<{}>(`${this.apiLink}/id?id=${id}`)
+    return this.http.delete<{}>(`${this.apiLink}/${id}`)
       .pipe(
         tap(() => this.questions$.next(removeQuestion))
       );

@@ -36,7 +36,7 @@ export class QuizService {
   updateQuiz(model: QuizzesModel, id: number): Observable<{}> {
     const updatedQuiz = this.quizzes$.value.map(b => b.id === id ? model : b);
 
-    return this.http.put<{}>(`${this.apiLink}/id?id=${id}`, model)
+    return this.http.put<{}>(`${this.apiLink}/${id}`, model)
       .pipe(
         tap(() => this.quizzes$.next(updatedQuiz))
       );
@@ -45,7 +45,7 @@ export class QuizService {
   removeQuiz(id: number): Observable<{}> {
     const removeQuiz = this.quizzes$.value.filter(b => b.id !== id);
 
-    return this.http.delete<{}>(`${this.apiLink}/id?id=${id}`)
+    return this.http.delete<{}>(`${this.apiLink}/${id}`)
       .pipe(
         tap(() => this.quizzes$.next(removeQuiz))
       );

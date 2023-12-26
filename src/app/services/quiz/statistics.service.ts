@@ -23,11 +23,11 @@ export class StatisticsService {
   constructor(private http: HttpClient) { }
 
   createSession(id: number): Observable<{}>{
-    return this.http.post(`${this.apiLink}/id?id=${id}`, null);
+    return this.http.post(`${this.apiLink}/${id}`, null);
   }
 
   getPoints(id: number): Observable<StatisticsModel>{
-    return this.http.get<StatisticsModel>(`${this.apiLink}/id?id=${id}`)
+    return this.http.get<StatisticsModel>(`${this.apiLink}/${id}`)
       .pipe(
         tap(point => this.points$.next(point))
       );
